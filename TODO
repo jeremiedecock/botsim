@@ -1,0 +1,57 @@
+TODO
+
+* Stage 1
+  - Faire un alias de certaines fonctions dans les classes dérivées (setPosition, getPosition, ...)
+  - Refaire la gestion des FPS pour la physique et OSG (doit tourner sur msi)
+    Le mode texte doit trouner le plus vite possible
+  - Mettre les contrôleurs sous forme de classes (pour permettre d'en créer
+    plusieurs). Créer un fichier "main.cpp" appelant la méthode "run" des
+    contrôleurs, utiliser getopt pour sélectionner le contrôleur
+  - Régler les oscillateurs de façon à vraiment faire avancer le robot
+    (somme de sinusoïdes comme sur la version de Renaud...)
+  - Ajouter les destructeurs
+  - Permettre l'ajout à la volée de robots dans le "world" et mettre à jour
+    la classe OSGView pour mettre à jour les liens "btRigidBody" / "osg::Geode"
+  - Permettre l'utilisation de plusieurs bodies dans les environnements
+    (std::map)
+  - Mettre des const là où il faut
+  - Mettre des 'virtual' là où il faut
+  - Ajouter le namespace 'botsim'
+  - Schéma des includes
+  - Doc doxygen
+  - Finir OSGView (prise en charge des capsules, cônes et cylindres)
+  - La description 3D des pièces et des servomoteurs doit être faite au
+    niveau des pièces et des servomoteurs
+  - Créer un catalogue de pièces et servomoteurs pour les robots
+  - Possibilité de n'afficher que les boites englobantes des éléments
+  - Possibilité de choisir la couleur des éléments
+  - Faire un vrai contrôleur...
+  - Gestion de la lumière et affichage des ombres
+  - Gestion de la wiimote
+
+* Objectifs
+  - Créer une méthode pour connaitre la position du robot
+  - Permettre de passer des ordres de position au robot
+  - Créer une méthode pour connaître l'énergie dépensée (dép sur 2 pattes # dep
+    sur 4 pattes) => hacker Bullet
+  - Créer une méthode pour tester si la simulation a explosé
+  - Suivre les erreurs de simulation, s'assurer de la qualité de la physique
+
+* Objectifs avancés
+  - Possibilité d'envoyer le rendu d'une caméra (placé dans la tête des
+    robots) vers un module "agent/IA" utilisant des bibliothèques tel
+    qu'OpenCV -> simulation *complète* de robots autonomes
+  - Les robots, pièces et autres éléments sont décrit dans un format XML
+    (COLLADA, Scythe ou schema fait maison) : ils deviennent de "vraies"
+    données stockées dans des fichiers .dae et non plus dans des fichiers
+    .cpp qu'il faut recompiler à chaque modification. Ajoute également
+    la possibilité de modéliser ces éléments via des outils externes tel
+    que Blender ou scythe editor
+  - Utilisation d'une interface d'abstraction du moteur physique (pour détacher
+    le simulateur de bullet) : Physics Abstraction Layer (PAL)
+  - Intégration du simulateur au projet Blender
+  - Réécriture sous forme client/serveur permettant de répartir les
+    simulations sur une grappe de serveurs (beowulf, ...)
+
+* Infos :
+  - Servos : Dynamixel AX-12+ (www.robotis.com)
