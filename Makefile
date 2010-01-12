@@ -1,7 +1,7 @@
 CC = g++
 
 OBJECTS = `find . -name "*.o"`
-LIBS = `pkg-config --libs openscenegraph` -lm ../bullet_lib/libbulletdynamics.a ../bullet_lib/libbulletcollision.a ../bullet_lib/libbulletmath.a
+LIBS = `pkg-config --libs openscenegraph` -lm ./bullet/lib/libbulletdynamics.a ./bullet/lib/libbulletcollision.a ./bullet/lib/libbulletmath.a
 
 SUBDIR = controller simulator
 

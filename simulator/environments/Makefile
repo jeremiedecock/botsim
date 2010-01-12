@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -I../../../bullet_src/ -Wall -pedantic -g -c
+CFLAGS = -I../../bullet/src/ -Wall -pedantic -g -c
 
 OBJECTS = Flat.o
 
