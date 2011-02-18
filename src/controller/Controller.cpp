@@ -59,129 +59,6 @@
     #include <string>
 #endif
 
-#define TICK_DURATION 1 / 70.f  // Nombre de secondes écoulées dans la simulation (ie pour le moteur) à chaque appel de stepSimulation
-#define TICK_INTERVAL 10000      // Nombre de us séparant deux appels à la méthode stepSimulation
-
-void usage(char * prog);
-
-void moveBot1(struct timeval, Robot *);
-
-void moveBot2(struct timeval, Robot *);
-
-void moveRobudog(struct timeval, Robot *);
- 
-int main(int argc, char ** argv) {
-    
-    // Getopt ///////////////////////////////////
-    int viewFlag = 0;
-    enum {bot1, bot2, robudog} robotName;
-    int c;
-     
-    opterr = 0;
-
-    while ((c = getopt (argc, argv, "vr:")) != -1) {
-        switch (c) {
-            case 'v':
-                viewFlag = 1;
-                break;
-            case 'r':
-                if(strcmp(optarg, "bot1") == 0) {
-                    robotName = bot1;
-                } else if(strcmp(optarg, "bot2") == 0) {
-                    robotName = bot2;
-                } else {
-                    robotName = robudog;
-                }
-                break;
-            case '?':
-                usage(argv[0]);
-                return 1;
-        }
-    }
-
-    // Init simulation //////////////////////////
-    World * world = World::createWorld();
-    Flat * environment = new Flat();
-
-    Robot * bot;
-
-    switch(robotName) {
-        case bot1 :
-            bot = new Bot1();
-            break;
-        case bot2 :
-            bot = new Bot2();
-            break;
-        default :
-            bot = new Robudog();
-    }
-
-    world->setEnvironment(environment);
-    world->setRobot(bot);
-
-    if(viewFlag) {
-        OSGView * view = new OSGView();
-        view->setWorld(world);
-        view->run();
-    }
-
-    // Init timers
-    struct timeval timev_init;  // Initial absolute time (static)
-    struct timeval timev_prev;  // Previous tick absolute time
-    struct timeval timev_cur;   // Current tick absolute time
-    struct timeval timev_rel;   // Current relative time (curent time - initial time)
-    struct timeval timev_diff;  // Tick duration (curent tick time - previous tick time)
-    
-    timerclear(&timev_init);
-    gettimeofday(&timev_init, NULL);
-
-    // First tick
-    timev_cur = timev_init;
-    world->stepSimulation(TICK_DURATION, 0); // On fait *une* step de 1/100s
-    timev_prev = timev_cur;
-
-    // Ticks loop
-    while(true) {
-        gettimeofday(&timev_cur, NULL);
-        timersub(&timev_cur, &timev_prev, &timev_diff);
-
-        // On fait un step de 1/100s toutes les 10000us
-        if(timev_diff.tv_usec > TICK_INTERVAL || timev_diff.tv_sec > 0) {
-
-            // Calculate relative time //////////////////////////
-            timersub(&timev_cur, &timev_init, &timev_rel);
-
-            // Debug info ///////////////////////////////////////
-            //fprintf(stderr, "%02u.%06u : %02u.%06u\n", timev_rel.tv_sec, timev_rel.tv_usec, timev_diff.tv_sec, timev_diff.tv_usec);
-            //fprintf(stderr, "%02u.%06u %02f %02f %02f\n", timev_rel.tv_sec, timev_rel.tv_usec, bot->getTrunkTransform("rtleg").getOrigin().getX(), bot->getTrunkTransform("rtleg").getOrigin().getY(), bot->getTrunkTransform("rtleg").getOrigin().getZ());
-            std::cout << bot->getTrunk() << std::endl;
-
-            // Move robot ///////////////////////////////////////
-            switch(robotName) {
-                case bot1 :
-                    moveBot1(timev_rel, bot);
-                    break;
-                case bot2 :
-                    moveBot2(timev_rel, bot);
-                    break;
-                default :
-                    moveRobudog(timev_rel, bot);
-            }
-
-            // Step simulation ///////////////////////////////////
-            world->stepSimulation(TICK_DURATION, 0); // On fait *une* step de 1/100s
-
-            timev_prev = timev_cur;
-
-        }
-    }
-    
-    return 0;
-}
-
-void usage(char * prog) {
-    fprintf(stderr, "usage: %s [-v] [-r name]\n", prog);
-}
 
 void moveBot1(struct timeval timev_cur, Robot * bot) {
 
@@ -200,6 +77,7 @@ void moveBot1(struct timeval timev_cur, Robot * bot) {
 
 }
 
+
 void moveBot2(struct timeval timev_cur, Robot * bot) {
 
     double t = timev_cur.tv_sec + (double) timev_cur.tv_usec / 1000000; // TODO : Approximative cast...
@@ -216,6 +94,7 @@ void moveBot2(struct timeval timev_cur, Robot * bot) {
     bot->getServomotor("lbHinge")->enableAngularMotor(true, lbHingeVelocity, 1000.);
 
 }
+
 
 void moveRobudog(struct timeval timev_cur, Robot * bot) {
     double t = timev_cur.tv_sec + (double) timev_cur.tv_usec / 1000000; // TODO : Approximative cast...
