@@ -1,11 +1,21 @@
-Botsim est un simulateur de robots utilisé dans le cadre de travaux sur les algorithmes génétiques. La physique est simulé via la librairie Bullet.
-Botsim est distribué sous licence MIT.
+                               BOTSIM
 
-~~~
+ABOUT
 
-The BotSim executables and source code are distributed under the MIT licence, which is similar in effect to the BSD licence. (This licence is Open Source certified and complies with the Debian Free Software Guidelines.) 
+Botsim is a robots simulator mainly used to test some evolutionary algorithms.
+Dynamics is simulated with 'Bullet Physics' library.
+Openscenegraph is used as graphical user interface.
 
-~~~
 
-Launch botsim text mode   : botsim
-Launch botsim visual mode : botsim -v
+COPYING
+
+The BotSim executables and source code are distributed under the MIT licence,
+which is similar in effect to the BSD licence. (This licence is Open Source
+certified and complies with the Debian Free Software Guidelines.) 
+
+
+INSTALL
+
+./configure
+make
+make install
