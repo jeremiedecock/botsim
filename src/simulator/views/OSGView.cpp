@@ -43,6 +43,12 @@
 #include <osg/PositionAttitudeTransform>
 #include <osgViewer/Viewer>
 
+#ifdef SHADOW
+#include <osgShadow/ShadowedScene>
+#include <osgShadow/ShadowMap>
+#include <osg/LightSource>
+#endif
+
 // NodeData /////////////////////////////////////////////////////////////////////////////////////////
 
 class NodeData : public osg::Referenced {
@@ -128,6 +134,27 @@ void * OSGView::fn_thread(void * args) {
     osg::Node * ground = createBase(osg::Vec3(0, 0, -0.5), 1000.0f);
     root->addChild(ground);
 
+#ifdef SHADOW
+    osg::Geode * lightMarkerGeode = new osg::Geode();
+    // SHADOW
+    osgShadow::ShadowedScene * shadowedScene = new osgShadow::ShadowedScene();
+    osgShadow::ShadowMap * sm = new osgShadow::ShadowMap();
+    shadowedScene->setShadowTechnique(sm);
+
+    // MAIN LIGHT SOURCE 
+    osg::Vec3 lightPosition(0, 0, 3); 
+    osg::LightSource * ls = new osg::LightSource;
+    ls->getLight()->setPosition(osg::Vec4(lightPosition, 1));
+    ls->getLight()->setAmbient(osg::Vec4(0.2, 0.2, 0.2, 1.0));
+    ls->getLight()->setDiffuse(osg::Vec4(0.6, 0.6, 0.6, 1.0));
+
+    shadowedScene->addChild(root);
+    shadowedScene->addChild(ls);
+    shadowedScene->addChild(lightMarkerGeode);
+
+    lightMarkerGeode->addDrawable(new osg::ShapeDrawable(new osg::Sphere(lightPosition + osg::Vec3(0,0,0.5f), 0.1f)));
+#endif
+
     // RobotParts
     for(it = robotParts.begin() ; it != robotParts.end() ; it++) {
         RobotPart * robotPart = *it;
@@ -189,7 +216,11 @@ void * OSGView::fn_thread(void * args) {
     // Make the viewer /////
     osg::ref_ptr<osgViewer::Viewer> viewer = new osgViewer::Viewer;
     viewer->setUpViewInWindow( 32, 32, 512, 512 );
+#ifdef SHADOW
+    viewer->setSceneData(shadowedScene);
+#else
     viewer->setSceneData(root);
+#endif
     viewer->run();
 
     return 0;
