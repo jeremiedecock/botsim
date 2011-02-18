@@ -24,8 +24,5 @@ botsim_SOURCES = ./main.cpp \
                  ./simulator/View.cpp \
                  ./simulator/Robot.h \
                  ./simulator/World.cpp
-botsim_CPPFLAGS = -I${top_srcdir}/include/bullet 
-botsim_LDADD    = ${top_srcdir}/lib/libbulletdynamics.a \
-                  ${top_srcdir}/lib/libbulletcollision.a \
-                  ${top_srcdir}/lib/libbulletmath.a
-botsim_LDFLAGS  = `pkg-config --libs openscenegraph`
+botsim_CPPFLAGS = `pkg-config --cflags bullet openscenegraph`
+botsim_LDFLAGS  = `pkg-config --libs bullet openscenegraph`

@@ -50,9 +50,7 @@ am_botsim_OBJECTS = botsim-main.$(OBJEXT) botsim-Controller.$(OBJEXT) \
 	botsim-Flat.$(OBJEXT) botsim-EnvironmentObject.$(OBJEXT) \
 	botsim-View.$(OBJEXT) botsim-World.$(OBJEXT)
 botsim_OBJECTS = $(am_botsim_OBJECTS)
-botsim_DEPENDENCIES = ${top_srcdir}/lib/libbulletdynamics.a \
-	${top_srcdir}/lib/libbulletcollision.a \
-	${top_srcdir}/lib/libbulletmath.a
+botsim_LDADD = $(LDADD)
 botsim_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(botsim_LDFLAGS) \
 	$(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@
@@ -186,12 +184,8 @@ botsim_SOURCES = ./main.cpp \
                  ./simulator/Robot.h \
                  ./simulator/World.cpp
 
-botsim_CPPFLAGS = -I${top_srcdir}/include/bullet 
-botsim_LDADD = ${top_srcdir}/lib/libbulletdynamics.a \
-                  ${top_srcdir}/lib/libbulletcollision.a \
-                  ${top_srcdir}/lib/libbulletmath.a
-
-botsim_LDFLAGS = `pkg-config --libs openscenegraph`
+botsim_CPPFLAGS = `pkg-config --cflags bullet openscenegraph`
+botsim_LDFLAGS = `pkg-config --libs bullet openscenegraph`
 all: all-am
 
 .SUFFIXES:
