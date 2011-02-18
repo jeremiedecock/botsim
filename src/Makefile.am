@@ -24,5 +24,5 @@ botsim_SOURCES = ./main.cpp \
                  ./simulator/View.cpp \
                  ./simulator/Robot.h \
                  ./simulator/World.cpp
-botsim_CPPFLAGS = `pkg-config --cflags bullet openscenegraph`
-botsim_LDFLAGS  = `pkg-config --libs bullet openscenegraph`
+botsim_CPPFLAGS = @LIBBULLET_CFLAGS@ @LIBOSG_CFLAGS@
+botsim_LDFLAGS  = @LIBBULLET_LIBS@ @LIBOSG_LIBS@

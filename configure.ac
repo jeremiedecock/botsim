@@ -12,8 +12,18 @@ AC_CONFIG_SRCDIR([src/main.cpp])
 AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_CPP
+AC_PROG_MAKE_SET
 
 # Checks for libraries.
+PKG_CHECK_MODULES(LIBBULLET,
+                  bullet >= 2.77,
+                  [],
+                  [AC_MSG_FAILURE([bullet not found])])
+
+PKG_CHECK_MODULES(LIBOSG,
+                  openscenegraph >= 2.4.0,
+                  [],
+                  [AC_MSG_FAILURE([openscenegraph not found])])
 
 # Checks for header files.
 AC_HEADER_STDC
