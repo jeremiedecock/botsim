@@ -30,7 +30,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "controller/Controller.h"
+#include "agents/Controller.h"
 
 #ifndef VIEWS_HEADERS
     #define   VIEWS_HEADERS
