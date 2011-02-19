@@ -100,10 +100,10 @@ void moveRobudog(struct timeval timev_cur, Robot * bot) {
     double t = timev_cur.tv_sec + (double) timev_cur.tv_usec / 1000000; // TODO : Approximative cast...
 
     // Head /////////////////////
-    {
-    double velocity = 2.0 * cos(t * 2 * M_PI * 0.5 + 3.14);                      // a * cos(w * t + d)
-    bot->getServomotor("head_y")->enableAngularMotor(true, velocity, 10000.);
-    }
+    //{
+    //double velocity = 2.0 * cos(t * 2 * M_PI * 0.5 + 3.14);                      // a * cos(w * t + d)
+    //bot->getServomotor("head_y")->enableAngularMotor(true, velocity, 10000.);
+    //}
 
     // Trunk - Clavicle /////////
     /*
@@ -121,12 +121,12 @@ void moveRobudog(struct timeval timev_cur, Robot * bot) {
     // Clavicle - Shoulder///////
     { // 1
     double velocity = -M_PI/2. * sin(t * M_PI + M_PI);               // a * cos(w * t + d)
-    bot->getServomotor("left_clavicle-shoulder")->enableAngularMotor(true, velocity, 5000.);
+    bot->getServomotor("left_clavicle-shoulder")->enableAngularMotor(true, velocity, 3500.);
     }
 
     { // 2
     double velocity = -M_PI/2. * sin(t * M_PI);               // a * cos(w * t + d)
-    bot->getServomotor("right_clavicle-shoulder")->enableAngularMotor(true, velocity, 5000.);
+    bot->getServomotor("right_clavicle-shoulder")->enableAngularMotor(true, velocity, 3500.);
     }
 
     // Shoulder - Upper Arm /////
@@ -145,23 +145,23 @@ void moveRobudog(struct timeval timev_cur, Robot * bot) {
     // Upper Arm - Fore Arm /////
     { // 3
     double velocity = M_PI/2. * sin(t * M_PI);               // a * cos(w * t + d)
-    bot->getServomotor("left_upper_arm-fore_arm")->enableAngularMotor(true, velocity, 5000.);
+    bot->getServomotor("left_upper_arm-fore_arm")->enableAngularMotor(true, velocity, 3500.);
     }
 
     { // 4
     double velocity = M_PI/2. * sin(t * M_PI + M_PI);               // a * cos(w * t + d)
-    bot->getServomotor("right_upper_arm-fore_arm")->enableAngularMotor(true, velocity, 5000.);
+    bot->getServomotor("right_upper_arm-fore_arm")->enableAngularMotor(true, velocity, 3500.);
     }
 
     // Trunk - Hip //////////////
     { // 5
     double velocity = -M_PI/2. * sin(t * M_PI + M_PI);               // a * cos(w * t + d)
-    bot->getServomotor("trunk-left_hip")->enableAngularMotor(true, velocity, 5000.);
+    bot->getServomotor("trunk-left_hip")->enableAngularMotor(true, velocity, 3500.);
     }
 
     { // 6
     double velocity = -M_PI/2. * sin(t * M_PI);               // a * cos(w * t + d)
-    bot->getServomotor("trunk-right_hip")->enableAngularMotor(true, velocity, 5000.);
+    bot->getServomotor("trunk-right_hip")->enableAngularMotor(true, velocity, 3500.);
     }
 
     // Hip - Thigh //////////////
@@ -180,12 +180,12 @@ void moveRobudog(struct timeval timev_cur, Robot * bot) {
     // Thigh - Shin /////////////
     { // 7
     double velocity = M_PI/2. * sin(t * M_PI);               // a * cos(w * t + d)
-    bot->getServomotor("left_thigh-left_shin")->enableAngularMotor(true, velocity, 5000.);
+    bot->getServomotor("left_thigh-left_shin")->enableAngularMotor(true, velocity, 3500.);
     }
 
     { // 8
     double velocity = M_PI/2. * sin(t * M_PI + M_PI);               // a * cos(w * t + d)
-    bot->getServomotor("right_thigh-right_shin")->enableAngularMotor(true, velocity, 5000.);
+    bot->getServomotor("right_thigh-right_shin")->enableAngularMotor(true, velocity, 3500.);
     }
 
 }

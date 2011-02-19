@@ -1,3 +1,12 @@
 .svn/
 *.swp
 *.o
+Makefile
+autom4te.cache/
+autoscan.log
+build.sh
+config.log
+config.status
+src/.deps/
+src/Makefile
+src/botsim

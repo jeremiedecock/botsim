@@ -71,7 +71,7 @@
 #define HALF_SHIN_SIZE_Y 10.0f  ///
 #define HALF_SHIN_SIZE_Z 20.0f
 
-#define HEAD_RADIUS 40.0f
+//#define HEAD_RADIUS 40.0f
 
 #define FOOT_RADIUS 15.0f  ///
 
@@ -88,7 +88,7 @@ Robudog::Robudog() {
     btCollisionShape * thighShape = new btBoxShape(btVector3(HALF_THIGH_SIZE_X, HALF_THIGH_SIZE_Y, HALF_THIGH_SIZE_Z));                // half lengths
     btCollisionShape * shinShape = new btBoxShape(btVector3(HALF_SHIN_SIZE_X, HALF_SHIN_SIZE_Y, HALF_SHIN_SIZE_Z));                    // half lengths
     btCollisionShape * footShape = new btSphereShape(FOOT_RADIUS);                                                                     // radius
-    btCollisionShape * headShape = new btSphereShape(HEAD_RADIUS);                                                                     // radius
+    //btCollisionShape * headShape = new btSphereShape(HEAD_RADIUS);                                                                     // radius
 
     //btScalar trunkMass = 70;
     btScalar trunkMass = 350;
@@ -128,9 +128,9 @@ Robudog::Robudog() {
     btVector3 footInertia(0, 0, 0);
     footShape->calculateLocalInertia(footMass, footInertia);
 
-    btScalar headMass = 5;
-    btVector3 headInertia(0, 0, 0);
-    headShape->calculateLocalInertia(headMass, headInertia);
+    //btScalar headMass = 5;
+    //btVector3 headInertia(0, 0, 0);
+    //headShape->calculateLocalInertia(headMass, headInertia);
 
     // Trunk ////////////////////
     {
@@ -156,21 +156,21 @@ Robudog::Robudog() {
     }
 
     // Head /////////////////////
-    {
-    RobotPart::btRigidBodyConstructionInfo rigidBodyCI(headMass,
-                                                       NULL,
-                                                       headShape,
-                                                       headInertia);
-    RobotPart * part = new RobotPart("head", rigidBodyCI);
+    //{
+    //RobotPart::btRigidBodyConstructionInfo rigidBodyCI(headMass,
+    //                                                   NULL,
+    //                                                   headShape,
+    //                                                   headInertia);
+    //RobotPart * part = new RobotPart("head", rigidBodyCI);
 
-    part->setCenterOfMassTransform(btTransform(btQuaternion(0, 0, 0, 1),
-                                   btVector3( HALF_TRUNK_SIZE_X,
-                                              0.0f,
-                                              FOOT_RADIUS * 2.0f + HALF_FORE_ARM_SIZE_Z * 2.0f + HALF_UPPER_ARM_SIZE_Z * 2.0f + HALF_TRUNK_SIZE_Z * 2.0f + HEAD_RADIUS + HEIGHT)));
-    part->setFriction(0.5);
+    //part->setCenterOfMassTransform(btTransform(btQuaternion(0, 0, 0, 1),
+    //                               btVector3( HALF_TRUNK_SIZE_X,
+    //                                          0.0f,
+    //                                          FOOT_RADIUS * 2.0f + HALF_FORE_ARM_SIZE_Z * 2.0f + HALF_UPPER_ARM_SIZE_Z * 2.0f + HALF_TRUNK_SIZE_Z * 2.0f + HEAD_RADIUS + HEIGHT)));
+    //part->setFriction(0.5);
 
-    addPart(part);
-    }
+    //addPart(part);
+    //}
 
     // Left clavicle ////////////
     {
@@ -516,12 +516,12 @@ Robudog::Robudog() {
                                           -HALF_TRUNK_SIZE_Y,
                                           -HALF_TRUNK_SIZE_Z + HALF_HIP_SIZE_Z);
 
-    const btVector3 trunkToHeadPivot( HALF_TRUNK_SIZE_X,
-                                      0.0f,
-                                      HALF_TRUNK_SIZE_Z );
+    //const btVector3 trunkToHeadPivot( HALF_TRUNK_SIZE_X,
+    //                                  0.0f,
+    //                                  HALF_TRUNK_SIZE_Z );
 
     // Head pivot ///////////////
-    const btVector3 headPivot( 0.0f, 0.0f, -HEAD_RADIUS );
+    //const btVector3 headPivot( 0.0f, 0.0f, -HEAD_RADIUS );
 
     // Left clavicle pivots /////
     const btVector3 leftClavicleToTrunkPivot(    0.0f,   -HALF_CLAVICLE_SIZE_Y,  0.0f );
@@ -568,17 +568,17 @@ Robudog::Robudog() {
 
 
     // Head /////////////////////
-    {
-    Servomotor * servomotor = new Servomotor("head_y",
-                                             *getPart("trunk"),
-                                             *getPart("head"),
-                                             trunkToHeadPivot,
-                                             headPivot,
-                                             yAxis,
-                                             yAxis);
-    servomotor->setLimit(-0.3, 0.3);
-    addServomotor(servomotor);
-    }
+    //{
+    //Servomotor * servomotor = new Servomotor("head_y",
+    //                                         *getPart("trunk"),
+    //                                         *getPart("head"),
+    //                                         trunkToHeadPivot,
+    //                                         headPivot,
+    //                                         yAxis,
+    //                                         yAxis);
+    //servomotor->setLimit(-0.3, 0.3);
+    //addServomotor(servomotor);
+    //}
 
     // Trunk - Clavicle /////////
     {
@@ -714,7 +714,7 @@ Robudog::Robudog() {
                                              leftHipToTrunkPivot,
                                              yAxis,
                                              yAxis);
-    servomotor->setLimit(-M_PI/2. - M_PI/8., -M_PI/2. + M_PI/8. );
+    servomotor->setLimit(M_PI/4. - M_PI/8., M_PI/4. + M_PI/8. );
     addServomotor(servomotor);
     }
 
@@ -726,7 +726,7 @@ Robudog::Robudog() {
                                              rightHipToTrunkPivot,
                                              yAxis,
                                              yAxis);
-    servomotor->setLimit(-M_PI/2. - M_PI/8., -M_PI/2. + M_PI/8. );
+    servomotor->setLimit(M_PI/4. - M_PI/8., M_PI/4. + M_PI/8. );
     addServomotor(servomotor);
     }
 
@@ -764,7 +764,7 @@ Robudog::Robudog() {
                                              shinToThighPivot,
                                              yAxis,
                                              yAxis);
-    servomotor->setLimit(M_PI/2. - M_PI/8., M_PI/2. + M_PI/8. );
+    servomotor->setLimit(-M_PI/2. - M_PI/8., -M_PI/2. + M_PI/8. );
     addServomotor(servomotor);
     }
 
@@ -776,7 +776,7 @@ Robudog::Robudog() {
                                              shinToThighPivot,
                                              yAxis,
                                              yAxis);
-    servomotor->setLimit(M_PI/2. - M_PI/8., M_PI/2. + M_PI/8. );
+    servomotor->setLimit(-M_PI/2. - M_PI/8., -M_PI/2. + M_PI/8. );
     addServomotor(servomotor);
     }
 
