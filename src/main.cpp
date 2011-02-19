@@ -191,7 +191,7 @@ int main(int argc, char ** argv) {
             timersub(&timev_cur, &timev_init, &timev_rel);
 
             // Debug info ///////////////////////////////////////
-            std::cout << bot->getTrunk() << std::endl;
+            //std::cout << bot->getTrunk() << std::endl;
 
             // Move robot ///////////////////////////////////////
             (*pmove) (timev_rel, bot);

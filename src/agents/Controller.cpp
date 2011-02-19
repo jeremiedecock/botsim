@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2009 Jérémie DECOCK <webmaster@jdhp.org>
+ * Copyright (c) 2008,2009,2011 Jérémie DECOCK <webmaster@jdhp.org>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -119,14 +119,14 @@ void moveRobudog(struct timeval timev_cur, Robot * bot) {
     */
 
     // Clavicle - Shoulder///////
-    {
-    double velocity = 2.0 * cos(t * 2 * M_PI * 0.5 + 3.14);               // a * cos(w * t + d)
-    bot->getServomotor("left_clavicle-shoulder")->enableAngularMotor(true, velocity, 100000.);
+    { // 1
+    double velocity = -M_PI/2. * sin(t * M_PI + M_PI);               // a * cos(w * t + d)
+    bot->getServomotor("left_clavicle-shoulder")->enableAngularMotor(true, velocity, 5000.);
     }
 
-    {
-    double velocity = -2.0 * cos(t * 2 * M_PI * 0.5 + 3.14);               // a * cos(w * t + d)
-    bot->getServomotor("right_clavicle-shoulder")->enableAngularMotor(true, velocity, 100000.);
+    { // 2
+    double velocity = -M_PI/2. * sin(t * M_PI);               // a * cos(w * t + d)
+    bot->getServomotor("right_clavicle-shoulder")->enableAngularMotor(true, velocity, 5000.);
     }
 
     // Shoulder - Upper Arm /////
@@ -143,25 +143,25 @@ void moveRobudog(struct timeval timev_cur, Robot * bot) {
     */
 
     // Upper Arm - Fore Arm /////
-    {
-    double velocity = -2.0 * cos(t * 2 * M_PI * 0.5 + 3.14);               // a * cos(w * t + d)
-    bot->getServomotor("left_upper_arm-fore_arm")->enableAngularMotor(true, velocity, 100000.);
+    { // 3
+    double velocity = M_PI/2. * sin(t * M_PI);               // a * cos(w * t + d)
+    bot->getServomotor("left_upper_arm-fore_arm")->enableAngularMotor(true, velocity, 5000.);
     }
 
-    {
-    double velocity = -2.0 * cos(t * 2 * M_PI * 0.5 + 3.14);               // a * cos(w * t + d)
-    bot->getServomotor("right_upper_arm-fore_arm")->enableAngularMotor(true, velocity, 100000.);
+    { // 4
+    double velocity = M_PI/2. * sin(t * M_PI + M_PI);               // a * cos(w * t + d)
+    bot->getServomotor("right_upper_arm-fore_arm")->enableAngularMotor(true, velocity, 5000.);
     }
 
     // Trunk - Hip //////////////
-    {
-    double velocity = 2.0 * cos(t * 2 * M_PI * 0.5 + 0);                  // a * cos(w * t + d)
-    bot->getServomotor("trunk-left_hip")->enableAngularMotor(true, velocity, 100000.);
+    { // 5
+    double velocity = -M_PI/2. * sin(t * M_PI + M_PI);               // a * cos(w * t + d)
+    bot->getServomotor("trunk-left_hip")->enableAngularMotor(true, velocity, 5000.);
     }
 
-    {
-    double velocity = -2.0 * cos(t * 2 * M_PI * 0.5 + 0);                  // a * cos(w * t + d)
-    bot->getServomotor("trunk-right_hip")->enableAngularMotor(true, velocity, 100000.);
+    { // 6
+    double velocity = -M_PI/2. * sin(t * M_PI);               // a * cos(w * t + d)
+    bot->getServomotor("trunk-right_hip")->enableAngularMotor(true, velocity, 5000.);
     }
 
     // Hip - Thigh //////////////
@@ -178,14 +178,14 @@ void moveRobudog(struct timeval timev_cur, Robot * bot) {
     */
 
     // Thigh - Shin /////////////
-    {
-    double velocity = -2.0 * cos(t * 2 * M_PI * 0.5 + 0);                  // a * cos(w * t + d)
-    bot->getServomotor("left_thigh-left_shin")->enableAngularMotor(true, velocity, 100000.);
+    { // 7
+    double velocity = M_PI/2. * sin(t * M_PI);               // a * cos(w * t + d)
+    bot->getServomotor("left_thigh-left_shin")->enableAngularMotor(true, velocity, 5000.);
     }
 
-    {
-    double velocity = -2.0 * cos(t * 2 * M_PI * 0.5 + 0);                  // a * cos(w * t + d)
-    bot->getServomotor("right_thigh-right_shin")->enableAngularMotor(true, velocity, 100000.);
+    { // 8
+    double velocity = M_PI/2. * sin(t * M_PI + M_PI);               // a * cos(w * t + d)
+    bot->getServomotor("right_thigh-right_shin")->enableAngularMotor(true, velocity, 5000.);
     }
 
 }
