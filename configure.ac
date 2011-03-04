@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.61)
-AC_INIT(Botsim, 0.1, gremy@tuxfamily.org)
+AC_INIT(Botsim, 0.1, jd.jdhp@gmail.com)
 AM_INIT_AUTOMAKE
 
 AC_CONFIG_SRCDIR([src/main.cpp])

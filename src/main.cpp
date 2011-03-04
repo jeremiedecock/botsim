@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008,2009,2011 Jérémie DECOCK <gremy@tuxfamily.org>
+ * Copyright (c) 2008,2009,2011 Jérémie DECOCK <jd.jdhp@gmail.com>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -223,7 +223,7 @@ static void usage() {
 static void print_version() {
     char msg[] =
         "Botsim 0.1\n\n"
-        "Copyright (c) 2008,2009,2011 Jeremie Decock <gremy@tuxfamily.org>.\n"
+        "Copyright (c) 2008,2009,2011 Jeremie Decock <jd.jdhp@gmail.com>.\n"
         "This is free software; see the source for copying conditions.\n"
         "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n";
 
