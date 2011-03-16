@@ -1,6 +1,7 @@
 TODO
 
 * Stage 1
+  - Vérifier l'absence de fuites de mémoire avec valgrind
   - Faire un alias de certaines fonctions dans les classes dérivées (setPosition, getPosition, ...)
   - Refaire la gestion des FPS pour la physique et OSG (doit tourner sur msi)
     Le mode texte doit trouner le plus vite possible
