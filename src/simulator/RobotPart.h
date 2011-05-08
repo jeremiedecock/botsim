@@ -20,12 +20,12 @@
  * THE SOFTWARE.
  */
 
-#include <btBulletDynamicsCommon.h>
 
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
+#ifndef ROBOT_PART_HEADER
+#define ROBOT_PART_HEADER
+
+#include <string>
+#include <btBulletDynamicsCommon.h>
 
 class RobotPart : public btRigidBody {
 
@@ -55,3 +55,4 @@ public:
     unsigned short int getGroupMaskInteractWith();
 };
 
+#endif

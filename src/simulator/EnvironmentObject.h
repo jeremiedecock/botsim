@@ -20,6 +20,9 @@
  * THE SOFTWARE.
  */
 
+#ifndef ENVIRONMENT_OBJECT_HEADER
+#define ENVIRONMENT_OBJECT_HEADER
+
 #include <btBulletDynamicsCommon.h>
 
 class EnvironmentObject : public btRigidBody {
@@ -38,3 +41,4 @@ public:
     unsigned short int getGroupMaskInteractWith();
 };
 
+#endif

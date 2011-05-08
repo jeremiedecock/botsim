@@ -20,12 +20,9 @@
  * THE SOFTWARE.
  */
 
-#include "Environments.h"
+#include <btBulletDynamicsCommon.h>
 
-#ifndef BULLET_HEADERS
-    #define BULLET_HEADERS
-    #include <btBulletDynamicsCommon.h>
-#endif
+#include "Environments.h"
 
 Flat::Flat() {
     btCollisionShape * collisionShape = new btStaticPlaneShape(btVector3(0, 0, 1), 0);
@@ -39,4 +36,8 @@ Flat::Flat() {
 
     body->setCenterOfMassTransform(btTransform(btQuaternion(0,0,0,1),
                                    btVector3(0.0f, 0.0f, 0.0f)));
+}
+
+Flat::~Flat() {
+    // TODO : delete
 }

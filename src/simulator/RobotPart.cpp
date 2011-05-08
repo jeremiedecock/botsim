@@ -20,12 +20,9 @@
  * THE SOFTWARE.
  */
 
-#ifndef ROBOT_PART_HEADERS
-	#define ROBOT_PART_HEADERS
-	#include "RobotPart.h"
-#endif
-
 #include <iostream>
+
+#include "RobotPart.h"
 
 int RobotPart::objectCounter = 0;
 

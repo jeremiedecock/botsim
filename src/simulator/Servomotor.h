@@ -20,12 +20,11 @@
  * THE SOFTWARE.
  */
 
-#include <btBulletDynamicsCommon.h>
+#ifndef SERVOMOTOR_HEADER
+#define SERVOMOTOR_HEADER
 
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
+#include <btBulletDynamicsCommon.h>
+#include <string>
 
 class Servomotor : public btHingeConstraint {
 protected:
@@ -50,3 +49,4 @@ public:
     void setDesiredAngle(float desiredAngle);
 };
 
+#endif

@@ -20,10 +20,10 @@
  * THE SOFTWARE.
  */
 
-#ifndef ENVIRONMENT_OBJECT_HEADERS
-	#define ENVIRONMENT_OBJECT_HEADERS
-	#include "EnvironmentObject.h"
-#endif
+#ifndef ENVIRONMENT_HEADER
+#define ENVIRONMENT_HEADER
+
+#include "EnvironmentObject.h"
 
 class Environment {
 protected:
@@ -34,3 +34,5 @@ public:
 
 	EnvironmentObject * getBody();
 };
+
+#endif

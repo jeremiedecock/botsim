@@ -22,52 +22,28 @@
 
 #include <math.h>
 #include <sys/time.h>
-#include <iostream>
-#include <stdio.h>
 #include <getopt.h>
 
 #include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+#include <btBulletDynamicsCommon.h>
+#include <iostream>
+#include <string>
+
 #include "agents/Controller.h"
-
-#ifndef VIEWS_HEADERS
-    #define   VIEWS_HEADERS
-    #include "simulator/views/Views.h"
-#endif
-
-#ifndef ENVIRONMENTS_HEADERS
-    #define  ENVIRONMENTS_HEADERS
-    #include "simulator/environments/Environments.h"
-#endif
-
-#ifndef ROBOTS_HEADERS
-    #define ROBOTS_HEADERS
-    #include "simulator/robots/Robots.h"
-#endif
-
-#ifndef BULLET_HEADERS
-    #define BULLET_HEADERS
-    #include <btBulletDynamicsCommon.h>
-#endif
-
-#ifndef WORLD_HEADER
-    #define WORLD_HEADER
-    #include "simulator/World.h"
-#endif
-
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
+#include "simulator/views/Views.h"
+#include "simulator/environments/Environments.h"
+#include "simulator/robots/Robots.h"
+#include "simulator/World.h"
 
 /* Nombre de secondes écoulées dans la simulation (ie pour le moteur)
    à chaque appel de stepSimulation */
-#define TICK_DURATION 1 / 70.f
+const double TICK_DURATION = 1. / 70.;
 
 /* Nombre de us séparant deux appels à la méthode stepSimulation */
-#define TICK_INTERVAL 10000
+const int TICK_INTERVAL = 10000;
 
 static void usage();
 
@@ -75,12 +51,12 @@ static void print_version();
 
 int main(int argc, char ** argv) {
     
-    typedef enum {bot1, bot2, robudog} robot_id_e;
+    typedef enum {bot1, bot2, robudog} robot_id_t;
 
     // GETOPT ///////////////////////////////////
 
-    int viewFlag = 1;
-    robot_id_e robot_id = robudog;
+    bool viewFlag = true;
+    robot_id_t robot_id = robudog;
 
     int c;
     while(1) {
@@ -104,12 +80,12 @@ int main(int argc, char ** argv) {
 
         switch (c) {
             case 'n':
-                viewFlag = 0;
+                viewFlag = false;
                 break;
             case 'r':
-                if(strcmp(optarg, "bot1") == 0) {
+                if(0 == strcmp(optarg, "bot1")) {
                     robot_id = bot1;
-                } else if(strcmp(optarg, "bot2") == 0) {
+                } else if(0 == strcmp(optarg, "bot2")) {
                     robot_id = bot2;
                 } else {
                     robot_id = robudog;
@@ -203,12 +179,18 @@ int main(int argc, char ** argv) {
 
         }
     }
+
+    delete environment;
+    delete bot;
+    //delete world;
+    if(viewFlag)
+        delete view;
     
     exit(EXIT_SUCCESS);
 }
 
 static void usage() {
-    char msg[] =
+    std::string msg =
         "A robots simulator mainly used to test some evolutionary algorithms.\n\n"
         "Usage: botsim [OPTION]...\n\n"
         "Options:\n"
@@ -217,16 +199,16 @@ static void usage() {
         "   -h, --help        display this help and exit\n"
         "   -v, --version     output version information and exit\n";
 
-    fprintf(stdout, "%s", msg);
+    std::cout << msg;
 }
 
 static void print_version() {
-    char msg[] =
+    std::string msg =
         "Botsim 0.1\n\n"
         "Copyright (c) 2008,2009,2011 Jeremie Decock <jd.jdhp@gmail.com>.\n"
         "This is free software; see the source for copying conditions.\n"
         "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n";
 
-    fprintf(stdout, "%s", msg);
+    std::cout << msg;
 }
 

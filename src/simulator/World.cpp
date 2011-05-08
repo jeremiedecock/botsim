@@ -20,19 +20,11 @@
  * THE SOFTWARE.
  */
 
-#include "World.h"
-
-#ifndef VECTOR_HEADER
-    #define VECTOR_HEADER
-    #include <vector>
-#endif
-
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
-
 #include <iostream>
+#include <string>
+#include <vector>
+
+#include "World.h"
 
 World::World(btDispatcher * dispatcher,
              btBroadphaseInterface * broadphase,

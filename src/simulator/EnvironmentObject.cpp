@@ -20,10 +20,7 @@
  * THE SOFTWARE.
  */
 
-#ifndef ENVIRONMENT_OBJECT_HEADERS
-	#define ENVIRONMENT_OBJECT_HEADERS
-	#include "EnvironmentObject.h"
-#endif
+#include "EnvironmentObject.h"
 
 EnvironmentObject::EnvironmentObject(const btRigidBodyConstructionInfo& constructionInfo,
                                      unsigned short int groupMask,

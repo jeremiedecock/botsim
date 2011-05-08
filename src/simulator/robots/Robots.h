@@ -20,23 +20,27 @@
  * THE SOFTWARE.
  */
 
-#ifndef ROBOT_HEADERS
-	#define ROBOT_HEADERS
-	#include "../Robot.h"
-#endif
+#ifndef ROBOTS_HEADER
+#define ROBOTS_HEADER
+
+#include "../Robot.h"
 
 class Bot1 : public Robot {
 public:
 	Bot1();
+	~Bot1();
 };
 
 class Bot2 : public Robot {
 public:
 	Bot2();
+	~Bot2();
 };
 
 class Robudog : public Robot {
 public:
 	Robudog();
+	~Robudog();
 };
 
+#endif

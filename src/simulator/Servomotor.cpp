@@ -20,12 +20,9 @@
  * THE SOFTWARE.
  */
 
-#ifndef SERVOMOTOR_HEADERS
-	#define SERVOMOTOR_HEADERS
-	#include "Servomotor.h"
-#endif
-
 #include <iostream>
+
+#include "Servomotor.h"
 
 int Servomotor::objectCounter = 0;
 

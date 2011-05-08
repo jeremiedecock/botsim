@@ -20,10 +20,10 @@
  * THE SOFTWARE.
  */
 
-#ifndef WORLD_HEADER
-	#define WORLD_HEADER
-	#include "World.h"
-#endif
+#ifndef VIEW_HEADER
+#define VIEW_HEADER
+
+#include "World.h"
 
 class View {
 protected:
@@ -38,3 +38,5 @@ public:
 
 	void close();
 };
+
+#endif

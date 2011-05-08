@@ -20,30 +20,15 @@
  * THE SOFTWARE.
  */
 
-#ifndef ROBOT_PART_HEADERS
-    #define ROBOT_PART_HEADERS
-    #include "RobotPart.h"
-#endif
+#ifndef ROBOT_HEADER
+#define ROBOT_HEADER
 
-#ifndef SERVOMOTOR_HEADERS
-	#define SERVOMOTOR_HEADERS
-	#include "Servomotor.h"
-#endif
+#include <map>
+#include <vector>
+#include <string>
 
-#ifndef MAP_HEADER
-    #define MAP_HEADER
-    #include <map>
-#endif
-
-#ifndef VECTOR_HEADER
-    #define VECTOR_HEADER
-    #include <vector>
-#endif
-
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
+#include "RobotPart.h"
+#include "Servomotor.h"
 
 class Robot {
 
@@ -88,3 +73,4 @@ public:
     bool hasExploded();
 };
 
+#endif

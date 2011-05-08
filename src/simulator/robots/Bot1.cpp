@@ -20,20 +20,10 @@
  * THE SOFTWARE.
  */
 
-#ifndef ROBOTS_HEADERS
-    #define ROBOTS_HEADERS
-    #include "Robots.h"
-#endif
+#include <btBulletDynamicsCommon.h>
+#include <string>
 
-#ifndef BULLET_HEADERS
-    #define BULLET_HEADERS
-    #include <btBulletDynamicsCommon.h>
-#endif
-
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
+#include "Robots.h"
 
 #define HEIGHT 1.0f
 
@@ -45,6 +35,7 @@
 //#define LEG_Z 10.0
 
 Bot1::Bot1() {
+
     // Bodies ////////////////////////////////////////////////////
     btCollisionShape * bodyShape = new btBoxShape(btVector3(5.0f, 10.0f, 2.5f)); // half lengths
     btCollisionShape * legShape = new btBoxShape(btVector3(1.0f, 1.0f, 5.0f)); // half lengths
@@ -176,3 +167,6 @@ Bot1::Bot1() {
     addServomotor(lbHinge);
 }
 
+Bot1::~Bot1() {
+    // TODO : delete
+}

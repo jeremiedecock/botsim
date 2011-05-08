@@ -20,19 +20,9 @@
  * THE SOFTWARE.
  */
 
-#include "Views.h"
-
-#ifndef VECTOR_HEADER
-    #define VECTOR_HEADER
-    #include <vector>
-#endif
-
-#ifndef BULLET_HEADERS
-    #define BULLET_HEADERS
-    #include <btBulletDynamicsCommon.h>
-#endif
-
+#include <btBulletDynamicsCommon.h>
 #include <iostream>
+#include <vector>
 
 #include <pthread.h>
 
@@ -48,6 +38,8 @@
 #include <osgShadow/ShadowMap>
 #include <osg/LightSource>
 #endif
+
+#include "Views.h"
 
 // NodeData /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -96,6 +88,10 @@ OSGView::OSGView() {
 
 }
 
+OSGView::~OSGView() {
+    // TODO : delete
+}
+
 void OSGView::run() {
     if(world != NULL) {  // TODO : faire qqch de + propre ici
         pthread_create(&tid, NULL, &OSGView::fn_thread, world);
@@ -106,7 +102,7 @@ void OSGView::close() {
     // TODO : Termine le thread désigné par tid
 }
 
-osg::Node * createBase(const osg::Vec3&, float);
+static osg::ref_ptr<osg::Node> createBase(const osg::Vec3&, float);
 
 void * OSGView::fn_thread(void * args) {
     World * world = static_cast< World * >(args);
@@ -119,31 +115,32 @@ void * OSGView::fn_thread(void * args) {
     // Make the scene graph /////
 
     // Root
-    osg::Group * root = new osg::Group();
+    osg::ref_ptr<osg::Group> root = new osg::Group();
 
     // Ground
-    //osg::Box * ground = new osg::Box(osg::Vec3(0, 0, -0.5), 1.0f);
+    //osg::ref_ptr<osg::Box> ground = new osg::Box(osg::Vec3(0, 0, -0.5), 1.0f);
     //ground->setHalfLengths(osg::Vec3(500, 500, 0.5));
 
-    //osg::ShapeDrawable * groundSd = new osg::ShapeDrawable(ground);
+    //osg::ref_ptr<osg::ShapeDrawable> groundSd = new osg::ShapeDrawable(ground);
 
-    //osg::Geode * groundGeode = new osg::Geode();
+    //osg::ref_ptr<osg::Geode> groundGeode = new osg::Geode();
     //groundGeode->addDrawable(groundSd);
     //root->addChild(groundGeode);
 
-    osg::Node * ground = createBase(osg::Vec3(0, 0, -0.5), 1000.0f);
+    osg::ref_ptr<osg::Node> ground = createBase(osg::Vec3(0, 0, -0.5), 1000.0f);
     root->addChild(ground);
 
 #ifdef SHADOW
-    osg::Geode * lightMarkerGeode = new osg::Geode();
+    osg::ref_ptr<osg::Geode> lightMarkerGeode = new osg::Geode();
+
     // SHADOW
-    osgShadow::ShadowedScene * shadowedScene = new osgShadow::ShadowedScene();
-    osgShadow::ShadowMap * sm = new osgShadow::ShadowMap();
+    osg::ref_ptr<osgShadow::ShadowedScene> shadowedScene = new osgShadow::ShadowedScene();
+    osg::ref_ptr<osgShadow::ShadowMap> sm = new osgShadow::ShadowMap();
     shadowedScene->setShadowTechnique(sm);
 
     // MAIN LIGHT SOURCE 
     osg::Vec3 lightPosition(0, 0, 3); 
-    osg::LightSource * ls = new osg::LightSource;
+    osg::ref_ptr<osg::LightSource> ls = new osg::LightSource;
     ls->getLight()->setPosition(osg::Vec4(lightPosition, 1));
     ls->getLight()->setAmbient(osg::Vec4(0.2, 0.2, 0.2, 1.0));
     ls->getLight()->setDiffuse(osg::Vec4(0.6, 0.6, 0.6, 1.0));
@@ -161,6 +158,7 @@ void * OSGView::fn_thread(void * args) {
         btCollisionShape * bulletShape = robotPart->getCollisionShape();
         int bulletShapeType = bulletShape->getShapeType();
 
+        // TODO : howto use osg::ref_ptr<> here ?
         osg::Shape * osgShape = NULL;
 
         if(bulletShapeType == BOX_SHAPE_PROXYTYPE) {
@@ -200,12 +198,12 @@ void * OSGView::fn_thread(void * args) {
         }
 
         if(osgShape != NULL) {
-            osg::ShapeDrawable * robotPartSd = new osg::ShapeDrawable(osgShape);
+            osg::ref_ptr<osg::ShapeDrawable> robotPartSd = new osg::ShapeDrawable(osgShape);
 
-            osg::Geode * robotPartNode = new osg::Geode();
+            osg::ref_ptr<osg::Geode> robotPartNode = new osg::Geode();
             robotPartNode->addDrawable(robotPartSd);
 
-            osg::PositionAttitudeTransform * pat = new osg::PositionAttitudeTransform();
+            osg::ref_ptr<osg::PositionAttitudeTransform> pat = new osg::PositionAttitudeTransform();
             pat->addChild(robotPartNode);
             pat->setUserData(new NodeData(*it));
             pat->setUpdateCallback(new NodeUpdateCallback());
@@ -227,7 +225,10 @@ void * OSGView::fn_thread(void * args) {
 }
 
 
-osg::Node * createBase(const osg::Vec3& center, float radius) {
+/**
+ *
+ */
+static osg::ref_ptr<osg::Node> createBase(const osg::Vec3& center, float radius) {
 
     int numTilesX = 10;
     int numTilesY = 10;
@@ -240,23 +241,23 @@ osg::Node * createBase(const osg::Vec3& center, float radius) {
     osg::Vec3 dy(osg::Vec3(0.0f, height/((float)numTilesY), 0.0f));
 
     // fill in vertices for grid, note numTilesX+1 * numTilesY+1...
-    osg::Vec3Array * coords = new osg::Vec3Array;
+    osg::ref_ptr<osg::Vec3Array> coords = new osg::Vec3Array;
     int iy;
     for(iy = 0 ; iy <= numTilesY ; ++iy) {
-        for(int ix=0;ix<=numTilesX;++ix) {
+        for(int ix=0 ; ix<=numTilesX ; ++ix) {
             coords->push_back(v000 + dx*(float)ix + dy*(float)iy);
         }
     }
 
     //Just two colours - black and white.
-    osg::Vec4Array * colors = new osg::Vec4Array;
+    osg::ref_ptr<osg::Vec4Array> colors = new osg::Vec4Array;
     colors->push_back(osg::Vec4(1.0f, 1.0f, 1.0f, 1.0f)); // white
     colors->push_back(osg::Vec4(0.0f, 0.0f, 0.0f, 1.0f)); // black
     int numColors=colors->size();
 
     int numIndicesPerRow=numTilesX+1;
-    osg::UByteArray * coordIndices = new osg::UByteArray; // assumes we are using less than 256 points...
-    osg::UByteArray * colorIndices = new osg::UByteArray;
+    osg::ref_ptr<osg::UByteArray> coordIndices = new osg::UByteArray; // assumes we are using less than 256 points...
+    osg::ref_ptr<osg::UByteArray> colorIndices = new osg::UByteArray;
     for(iy=0 ; iy<numTilesY ; ++iy) {
         for(int ix=0 ; ix<numTilesX ; ++ix) {
             // four vertices per quad.
@@ -271,10 +272,10 @@ osg::Node * createBase(const osg::Vec3& center, float radius) {
     }
 
     // set up a single normal
-    osg::Vec3Array * normals = new osg::Vec3Array;
+    osg::ref_ptr<osg::Vec3Array> normals = new osg::Vec3Array;
     normals->push_back(osg::Vec3(0.0f, 0.0f, 1.0f));
 
-    osg::Geometry * geom = new osg::Geometry;
+    osg::ref_ptr<osg::Geometry> geom = new osg::Geometry;
     geom->setVertexArray(coords);
     geom->setVertexIndices(coordIndices);
 
@@ -290,8 +291,8 @@ osg::Node * createBase(const osg::Vec3& center, float radius) {
         0,
         coordIndices->size()));
 
-    osg::Geode * geode = new osg::Geode;
+    osg::ref_ptr<osg::Geode> geode = new osg::Geode;
     geode->addDrawable(geom);
 
-    return geode;
+    return geode.get();
 }

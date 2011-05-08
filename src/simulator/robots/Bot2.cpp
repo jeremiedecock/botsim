@@ -20,20 +20,10 @@
  * THE SOFTWARE.
  */
 
-#ifndef ROBOTS_HEADERS
-    #define ROBOTS_HEADERS
-    #include "Robots.h"
-#endif
+#include <btBulletDynamicsCommon.h>
+#include <string>
 
-#ifndef BULLET_HEADERS
-    #define BULLET_HEADERS
-    #include <btBulletDynamicsCommon.h>
-#endif
-
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
+#include "Robots.h"
 
 #define HEIGHT 1.0f
 
@@ -45,6 +35,7 @@
 #define HALF_LEG_SIZE_Z 50.0f
 
 Bot2::Bot2() {
+
     name = "bot2";
 
     // Bodies ////////////////////////////////////////////////////
@@ -200,5 +191,9 @@ Bot2::Bot2() {
     addServomotor(ltHinge);
     addServomotor(rbHinge);
     addServomotor(lbHinge);
+}
+
+Bot2::~Bot2() {
+    // TODO : delete
 }
 

@@ -20,12 +20,12 @@
  * THE SOFTWARE.
  */
 
-#ifndef VIEW_HEADER
-	#define VIEW_HEADER
-	#include "../View.h"
-#endif
+#ifndef VIEWS_HEADER
+#define VIEWS_HEADER
 
 #include <pthread.h>
+
+#include "../View.h"
 
 class OSGView : public View {
 private:
@@ -35,8 +35,11 @@ private:
 
 public:
 	OSGView();
+	~OSGView();
 
 	void run();
 
 	void close();
 };
+
+#endif

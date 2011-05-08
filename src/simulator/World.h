@@ -20,20 +20,12 @@
  * THE SOFTWARE.
  */
 
-#ifndef ENVIRONMENT_HEADERS
-	#define  ENVIRONMENT_HEADERS
-	#include "Environment.h"
-#endif
+#ifndef WORLD_HEADER
+#define WORLD_HEADER
 
-#ifndef ROBOT_HEADERS
-	#define ROBOT_HEADERS
-	#include "Robot.h"
-#endif
-
-#ifndef BULLET_HEADERS
-	#define BULLET_HEADERS
-	#include <btBulletDynamicsCommon.h>
-#endif
+#include "Environment.h"
+#include "Robot.h"
+#include <btBulletDynamicsCommon.h>
 
 class World : public btDiscreteDynamicsWorld {
 private:
@@ -58,4 +50,4 @@ public:
 	Robot * getRobot();
 };
 
-
+#endif

@@ -20,14 +20,10 @@
  * THE SOFTWARE.
  */
 
-#ifndef ROBOT_HEADERS
-    #define ROBOT_HEADERS
-    #include "Robot.h"
-#endif
-
 #include <iostream>
-
 #include <string>
+
+#include "Robot.h"
 
 int Robot::objectCounter = 0;
 

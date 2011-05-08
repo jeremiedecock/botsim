@@ -22,43 +22,19 @@
 
 #include <math.h>
 #include <sys/time.h>
-#include <iostream>
 #include <stdio.h>
-
 #include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-#ifndef VIEWS_HEADERS
-    #define   VIEWS_HEADERS
-    #include "../simulator/views/Views.h"
-#endif
+#include <btBulletDynamicsCommon.h>
+#include <iostream>
+#include <string>
 
-#ifndef ENVIRONMENTS_HEADERS
-    #define  ENVIRONMENTS_HEADERS
-    #include "../simulator/environments/Environments.h"
-#endif
-
-#ifndef ROBOTS_HEADERS
-    #define ROBOTS_HEADERS
-    #include "../simulator/robots/Robots.h"
-#endif
-
-#ifndef BULLET_HEADERS
-    #define BULLET_HEADERS
-    #include <btBulletDynamicsCommon.h>
-#endif
-
-#ifndef WORLD_HEADER
-    #define WORLD_HEADER
-    #include "../simulator/World.h"
-#endif
-
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
-
+#include "../simulator/views/Views.h"
+#include "../simulator/environments/Environments.h"
+#include "../simulator/robots/Robots.h"
+#include "../simulator/World.h"
 
 void moveBot1(struct timeval timev_cur, Robot * bot) {
 

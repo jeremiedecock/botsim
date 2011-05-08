@@ -20,12 +20,15 @@
  * THE SOFTWARE.
  */
 
-#ifndef ENVIRONMENT_HEADERS
-	#define  ENVIRONMENT_HEADERS
-	#include "../Environment.h"
-#endif
+#ifndef ENVIRONMENTS_HEADER
+#define ENVIRONMENTS_HEADER
+
+#include "../Environment.h"
 
 class Flat : public Environment {
 public:
 	Flat();
+	~Flat();
 };
+
+#endif

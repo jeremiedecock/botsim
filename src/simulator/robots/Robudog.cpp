@@ -22,20 +22,10 @@
 
 //#define FIXED_TRUNK
 
-#ifndef ROBOTS_HEADERS
-    #define ROBOTS_HEADERS
-    #include "Robots.h"
-#endif
+#include <btBulletDynamicsCommon.h>
+#include <string>
 
-#ifndef BULLET_HEADERS
-    #define BULLET_HEADERS
-    #include <btBulletDynamicsCommon.h>
-#endif
-
-#ifndef STRING_HEADER
-    #define STRING_HEADER
-    #include <string>
-#endif
+#include "Robots.h"
 
 #define HEIGHT 1.0f
 
@@ -805,5 +795,9 @@ Robudog::Robudog() {
     addServomotor(servomotor);
     }
 
+}
+
+Robudog::~Robudog() {
+   // TODO : delete 
 }
 
