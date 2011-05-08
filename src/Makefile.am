@@ -5,10 +5,12 @@ botsim_SOURCES = ./main.cpp \
                  ./simulator/Environment.h \
                  ./simulator/World.h \
                  ./simulator/RobotPart.h \
-                 ./simulator/views/Views.h \
+                 ./simulator/views/OSGView.h \
                  ./simulator/views/OSGView.cpp \
                  ./simulator/Servomotor.cpp \
-                 ./simulator/robots/Robots.h \
+                 ./simulator/robots/Bot1.h \
+                 ./simulator/robots/Bot2.h \
+                 ./simulator/robots/Robudog.h \
                  ./simulator/robots/Bot1.cpp \
                  ./simulator/robots/Bot2.cpp \
                  ./simulator/robots/Robudog.cpp \
@@ -18,8 +20,8 @@ botsim_SOURCES = ./main.cpp \
                  ./simulator/RobotPart.cpp \
                  ./simulator/EnvironmentObject.h \
                  ./simulator/Servomotor.h \
-                 ./simulator/environments/Flat.cpp \
-                 ./simulator/environments/Environments.h \
+                 ./simulator/environments/FlatEnvironment.cpp \
+                 ./simulator/environments/FlatEnvironment.h \
                  ./simulator/EnvironmentObject.cpp \
                  ./simulator/View.cpp \
                  ./simulator/Robot.h \
