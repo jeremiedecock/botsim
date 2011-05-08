@@ -134,8 +134,10 @@ int main(int argc, char ** argv) {
     world->setEnvironment(environment);
     world->setRobot(bot);
 
+    OSGView * view = NULL;
+
     if(viewFlag) {
-        OSGView * view = new OSGView();
+        view = new OSGView();
         view->setWorld(world);
         view->run();
     }
@@ -183,7 +185,7 @@ int main(int argc, char ** argv) {
     delete environment;
     delete bot;
     //delete world;
-    if(viewFlag)
+    if(view != NULL)
         delete view;
     
     exit(EXIT_SUCCESS);
