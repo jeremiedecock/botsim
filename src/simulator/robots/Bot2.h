@@ -20,24 +20,15 @@
  * THE SOFTWARE.
  */
 
-#include <btBulletDynamicsCommon.h>
+#ifndef BOT2_HEADER
+#define BOT2_HEADER
 
-#include "Environments.h"
+#include "../Robot.h"
 
-Flat::Flat() {
-    btCollisionShape * collisionShape = new btStaticPlaneShape(btVector3(0, 0, 1), 0);
+class Bot2 : public Robot {
+public:
+	Bot2();
+	~Bot2();
+};
 
-    EnvironmentObject::btRigidBodyConstructionInfo rigidBodyCI(0,
-                                                               NULL,
-                                                               collisionShape,
-                                                               btVector3(0, 0, 0));
-
-    body = new EnvironmentObject(rigidBodyCI);
-
-    body->setCenterOfMassTransform(btTransform(btQuaternion(0,0,0,1),
-                                   btVector3(0.0f, 0.0f, 0.0f)));
-}
-
-Flat::~Flat() {
-    // TODO : delete
-}
+#endif

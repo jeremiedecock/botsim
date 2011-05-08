@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008,2009,2011 Jérémie DECOCK <jd.jdhp@gmail.com>
+ * Copyright (c) 2008, 2009 Jérémie DECOCK <webmaster@jdhp.org>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,19 +20,25 @@
  * THE SOFTWARE.
  */
 
-#ifndef CONTROLLER_HEADER
-#define CONTROLLER_HEADER
+#include <btBulletDynamicsCommon.h>
 
-#include <sys/time.h>
+#include "FlatEnvironment.h"
 
-#include "../simulator/robots/Bot1.h"
-#include "../simulator/robots/Bot2.h"
-#include "../simulator/robots/Robudog.h"
+FlatEnvironment::FlatEnvironment() {
+    btCollisionShape * collisionShape = new btStaticPlaneShape(btVector3(0, 0, 1), 0);
 
-void moveBot1(struct timeval, Robot *);
+    EnvironmentObject::btRigidBodyConstructionInfo rigidBodyCI(0,
+                                                               NULL,
+                                                               collisionShape,
+                                                               btVector3(0, 0, 0));
 
-void moveBot2(struct timeval, Robot *);
+    body = new EnvironmentObject(rigidBodyCI);
 
-void moveRobudog(struct timeval, Robot *);
+    body->setCenterOfMassTransform(btTransform(btQuaternion(0,0,0,1),
+                                   btVector3(0.0f, 0.0f, 0.0f)));
+}
 
-#endif
+FlatEnvironment::~FlatEnvironment() {
+    // TODO : delete
+}
+

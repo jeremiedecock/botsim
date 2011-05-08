@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008,2009,2011 Jérémie DECOCK <jd.jdhp@gmail.com>
+ * Copyright (c) 2008, 2009 Jérémie DECOCK <webmaster@jdhp.org>
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,19 +20,15 @@
  * THE SOFTWARE.
  */
 
-#ifndef CONTROLLER_HEADER
-#define CONTROLLER_HEADER
+#ifndef ROBUDOG_HEADER
+#define ROBUDOG_HEADER
 
-#include <sys/time.h>
+#include "../Robot.h"
 
-#include "../simulator/robots/Bot1.h"
-#include "../simulator/robots/Bot2.h"
-#include "../simulator/robots/Robudog.h"
-
-void moveBot1(struct timeval, Robot *);
-
-void moveBot2(struct timeval, Robot *);
-
-void moveRobudog(struct timeval, Robot *);
+class Robudog : public Robot {
+public:
+	Robudog();
+	~Robudog();
+};
 
 #endif

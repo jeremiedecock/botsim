@@ -23,7 +23,7 @@
 #include <btBulletDynamicsCommon.h>
 #include <string>
 
-#include "Robots.h"
+#include "Bot1.h"
 
 #define HEIGHT 1.0f
 

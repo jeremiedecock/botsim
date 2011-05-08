@@ -33,9 +33,11 @@
 #include <string>
 
 #include "agents/Controller.h"
-#include "simulator/views/Views.h"
-#include "simulator/environments/Environments.h"
-#include "simulator/robots/Robots.h"
+#include "simulator/views/OSGView.h"
+#include "simulator/environments/FlatEnvironment.h"
+#include "simulator/robots/Bot1.h"
+#include "simulator/robots/Bot2.h"
+#include "simulator/robots/Robudog.h"
 #include "simulator/World.h"
 
 /* Nombre de secondes écoulées dans la simulation (ie pour le moteur)
@@ -107,7 +109,7 @@ int main(int argc, char ** argv) {
 
     // INIT SIMULATION //////////////////////////
     World * world = World::createWorld();
-    Flat * environment = new Flat();
+    FlatEnvironment * environment = new FlatEnvironment();
 
     void (* pmove) (struct timeval, Robot *);
 

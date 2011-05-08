@@ -20,26 +20,15 @@
  * THE SOFTWARE.
  */
 
-#ifndef VIEWS_HEADER
-#define VIEWS_HEADER
+#ifndef BOT1_HEADER
+#define BOT1_HEADER
 
-#include <pthread.h>
+#include "../Robot.h"
 
-#include "../View.h"
-
-class OSGView : public View {
-private:
-	pthread_t tid;
-
-	static void * fn_thread(void * args);
-
+class Bot1 : public Robot {
 public:
-	OSGView();
-	~OSGView();
-
-	void run();
-
-	void close();
+	Bot1();
+	~Bot1();
 };
 
 #endif

@@ -31,9 +31,11 @@
 #include <iostream>
 #include <string>
 
-#include "../simulator/views/Views.h"
-#include "../simulator/environments/Environments.h"
-#include "../simulator/robots/Robots.h"
+#include "../simulator/views/OSGView.h"
+#include "../simulator/environments/FlatEnvironment.h"
+#include "../simulator/robots/Bot1.h"
+#include "../simulator/robots/Bot2.h"
+#include "../simulator/robots/Robudog.h"
 #include "../simulator/World.h"
 
 void moveBot1(struct timeval timev_cur, Robot * bot) {
