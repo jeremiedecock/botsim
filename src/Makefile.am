@@ -2,27 +2,29 @@ bin_PROGRAMS = botsim
 botsim_SOURCES = ./main.cpp \
                  ./agents/Controller.h \
                  ./agents/Controller.cpp \
-                 ./simulator/Environment.h \
-                 ./simulator/World.h \
-                 ./simulator/RobotPart.h \
-                 ./simulator/views/Views.h \
+                 ./simulator/views/OSGView.h \
                  ./simulator/views/OSGView.cpp \
-                 ./simulator/Servomotor.cpp \
-                 ./simulator/robots/Robots.h \
+                 ./simulator/robots/Bot1.h \
                  ./simulator/robots/Bot1.cpp \
+                 ./simulator/robots/Bot2.h \
                  ./simulator/robots/Bot2.cpp \
+                 ./simulator/robots/Robudog.h \
                  ./simulator/robots/Robudog.cpp \
-                 ./simulator/Robot.cpp \
-                 ./simulator/View.h \
+                 ./simulator/environments/FlatEnvironment.h \
+                 ./simulator/environments/FlatEnvironment.cpp \
                  ./simulator/Environment.cpp \
-                 ./simulator/RobotPart.cpp \
-                 ./simulator/EnvironmentObject.h \
-                 ./simulator/Servomotor.h \
-                 ./simulator/environments/Flat.cpp \
-                 ./simulator/environments/Environments.h \
+                 ./simulator/Environment.h \
                  ./simulator/EnvironmentObject.cpp \
+                 ./simulator/EnvironmentObject.h \
+                 ./simulator/RobotPart.cpp \
+                 ./simulator/RobotPart.h \
+                 ./simulator/Servomotor.cpp \
+                 ./simulator/Servomotor.h \
+                 ./simulator/View.h \
                  ./simulator/View.cpp \
                  ./simulator/Robot.h \
+                 ./simulator/Robot.cpp \
                  ./simulator/World.cpp
+                 ./simulator/World.h \
 botsim_CPPFLAGS = @LIBBULLET_CFLAGS@ @LIBOSG_CFLAGS@
 botsim_LDFLAGS  = @LIBBULLET_LIBS@ @LIBOSG_LIBS@
