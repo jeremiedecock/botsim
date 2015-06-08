@@ -9,7 +9,8 @@ algorithms.
 
 ## <a name="sed_dependencies"></a>Pyarm dependencies
 
-Botsim.org requires the following libraries to be installed in order to be compiled and launched:
+Botsim.org requires the following libraries to be installed  in your operating
+system so it can be compiled and launched:
 
 * [Boost::program_options](http://www.boost.org/doc/libs/1_58_0/doc/html/program_options.html) to manage program options;
 * [Bullet Physics](http://bulletphysics.org) the open source physics engine used in Botsim.org;
@@ -27,7 +28,7 @@ Debian 8 (Jessie) users should install the following packages to compile and run
 * cmake;
 * cmake-curses-gui.
 
-Package names are roughly the same in other Debian releases as well as in other
+Package names are roughly the same in other Debian releases as well as in the other
 Debian based systems (Ubuntu, Linux Mint, ...).
 
 ## Compile from sources
@@ -39,7 +40,7 @@ Instructions for Microsoft Windows and MacOS X will come soon.
 
 Ensure *cmake*, *cmake-curses-gui* and
 [previously listed dependencies](#sed_dependencies) are
-installed on your system, then open a unix terminal, go to the project's root
+installed on your system. Then open a unix terminal, go to the project's root
 directory and type:
 
 ```
@@ -49,7 +50,7 @@ cmake ..
 ccmake
 ```
 
-Then select the desired compilation targets and options and press 'c' then 'g'.
+Then select the desired compilation targets and options then press 'c' and 'g'.
 
 ```
 make
@@ -61,7 +62,7 @@ You can use [doxygen](www.doxygen.org) to generate the Botsim API
 documentation.
 
 Ensure doxygen is installed on your system and type `doxygen` from the
-project's root directory.
+Botsim.org project's root directory.
 
 
 ## License
