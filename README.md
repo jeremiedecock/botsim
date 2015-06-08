@@ -19,9 +19,13 @@ Botsim.org requires the following libraries to be installed in order to be compi
 Debian 8 (Jessie) users should install the following packages to compile and run Botsim.org:
 
 * libboost-dev;
-* libbullet-dev and libbullet-extras-dev;
+* libbullet-dev;
+* libbullet-extras-dev;
 * libeigen3-dev;
-* libopenscenegraph-dev.
+* libopenscenegraph-dev;
+* build-essential;
+* cmake;
+* cmake-curses-gui.
 
 Package names are roughly the same in other Debian releases as well as in other
 Debian based systems (Ubuntu, Linux Mint, ...).
