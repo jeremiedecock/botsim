@@ -12,7 +12,7 @@ algorithms.
 Botsim.org requires the [cmake](www.cmake.org) build system to be compiled.
 
 Ensure *cmake* and *cmake-curses-gui* are installed on your system, then open a
-unix terminal and type:
+unix terminal, go to the project's root directory and type:
 
 ```
 mkdir build
