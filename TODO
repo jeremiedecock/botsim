@@ -3,6 +3,12 @@ TODO
 Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/watch?v=BGAwRKPlpCw
 
 STEP 1: objets, actuateurs, contrôleurs
++ créer une nouvelle scène avec 1 seul robudog qui écrit dans un fichier la distance parcourue (et le temps ?)
++ motor: set limits (contraindre les angles)
+- réecrire ground -> plus grand, en plusieurs parties
+- régler les constantes physiques (mass, friction, torque, ...)
+- être capable de détecter et pénaliser les explosions de simulation
+
 - "ConstantController" et "SinusoidController" prend en paramètre une map
   std::map<Actuator *, UnObjetOuUneStructureQuiContientLesParamPourLActuateurEnClé>
   pour donner un jeu de paramètres différent à chaque actuateur ?
