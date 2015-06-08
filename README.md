@@ -7,7 +7,12 @@ Copyright (c) 2010,2011,2015 Jeremie DECOCK (http://www.jdhp.org)
 Botsim.org is a robots simulator mainly used to test some evolutionary
 algorithms. 
 
-## <a name="sed_dependencies"></a>Pyarm dependencies
+## Source code
+
+Botsim.org source code can be retrieved on [GitHub](https://github.com/jeremiedecock/botsim)
+and [JDHP](http://www.jdhp.org/projects_en.html#botsim).
+
+## <a name="sed_dependencies"></a>Dependencies
 
 Botsim.org requires the following libraries to be installed  in your operating
 system:
