@@ -10,14 +10,15 @@ algorithms.
 ## <a name="sed_dependencies"></a>Pyarm dependencies
 
 Botsim.org requires the following libraries to be installed  in your operating
-system so it can be compiled and launched:
+system:
 
 * [Boost::program_options](http://www.boost.org/doc/libs/1_58_0/doc/html/program_options.html) to manage program options;
 * [Bullet Physics](http://bulletphysics.org) the open source physics engine used in Botsim.org;
 * [Eigen 3](http://eigen.tuxfamily.org) a powerful C++ template library for linear algebra;
 * [Open Scene Graph 3.0](http://www.openscenegraph.org/) an open source high performance 3D graphics toolkit.
 
-Debian 8 (Jessie) users should install the following packages to compile and run Botsim.org:
+Debian 8 (Jessie) users should install the following Debian packages to compile
+and run Botsim.org:
 
 * libboost-dev;
 * libbullet-dev;
