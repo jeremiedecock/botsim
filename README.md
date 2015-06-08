@@ -34,7 +34,7 @@ Debian based systems (Ubuntu, Linux Mint, ...).
 
 ## Compile from sources
 
-Botsim.org requires the [cmake](www.cmake.org) build system to be compiled.
+Botsim.org requires the [cmake](www.cmake.org) build system to compile.
 
 So far, Botsim.org has been tested on Gnu/Linux systems only.
 Instructions for Microsoft Windows and MacOS X will come soon.
