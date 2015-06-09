@@ -9,13 +9,9 @@
 
 #include "point_to_point_slot.h"
 
-botsim::PointToPointSlot::PointToPointSlot(Eigen::Vector3d _pivot) : pivot(_pivot) {
+botsim::PointToPointSlot::PointToPointSlot(const Eigen::Vector3d & _pivot) : pivot(_pivot) { }
 
-}
-
-botsim::PointToPointSlot::~PointToPointSlot() {
-    // TODO
-}
+botsim::PointToPointSlot::~PointToPointSlot() { }
 
 Eigen::Vector3d botsim::PointToPointSlot::getPivot() const {
     return this->pivot;

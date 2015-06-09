@@ -22,7 +22,7 @@ namespace botsim {
             Eigen::Vector3d pivot;
 
         public:
-            PointToPointSlot(Eigen::Vector3d pivot);
+            PointToPointSlot(const Eigen::Vector3d & pivot);
 
             virtual ~PointToPointSlot();
 
