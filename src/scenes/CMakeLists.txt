@@ -29,6 +29,7 @@ option(BUILD_PENDULUM_HINGE "Build the pendulum demo (using hinge joints)." OFF)
 option(BUILD_PENDULUM_P2P "Build the pendulum demo (using point_to_point joints)." OFF)
 option(BUILD_PENDULUM_MOTOR "Build the pendulum demo (using motor actuator)." OFF)
 option(BUILD_ROBUDOG_JD "Build the robudog demo (JD's version)." OFF)
+option(BUILD_ROBUDOG_OPTIM "Build the robudog client for optimizers (JD's version)." OFF)
 
 # Set executables
 if(BUILD_DEMO)
@@ -58,3 +59,7 @@ endif(BUILD_PENDULUM_MOTOR)
 if(BUILD_ROBUDOG_JD)
     config_and_add_executable(robudog_jd robudog_jd.cc)
 endif(BUILD_ROBUDOG_JD)
+
+if(BUILD_ROBUDOG_OPTIM)
+    config_and_add_executable(robudog_optim robudog_optim.cc)
+endif(BUILD_ROBUDOG_OPTIM)
