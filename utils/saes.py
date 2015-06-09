@@ -30,8 +30,11 @@ SIGMA_MIN = 1e-10         # ES stops when sigma is smaller than sigma_min
 def sphere_function(indiv):
     x = indiv.x
     assert x.shape == X_INIT.shape, x
-    y = np.dot(x, x)
+    y = -np.dot(x, x)
     return y
+
+def robudog(indiv):
+    pass
 
 fitness = sphere_function
 
@@ -44,17 +47,17 @@ class Individual():
     def __init__(self, x, sigma):
         self.x = x
         self.sigma = sigma
-        self.cost = fitness(self)
+        self.reward = fitness(self)
 
     def __str__(self):
-        return "{0} {1} {2}".format(self.x, self.sigma, self.cost)
+        return "{0} {1} {2}".format(self.x, self.sigma, self.reward)
 
 ###########################################################
 
 # This sorts the population according to the individuals' fitnesses
 # pop: a list of Individual objects
 def select_individuals(pop):
-    pop.sort(key=lambda indiv: indiv.cost, reverse=False)
+    pop.sort(key=lambda indiv: indiv.reward, reverse=True)
     return pop[:MU]
 
 # This performs intermediate (multi-) recombination
@@ -89,7 +92,7 @@ def main():
         print(parent_pop[0])
 
 # Remark: Final approximation of the optimizer is in "parent_pop[0].x"
-#         corresponding fitness is in "parent_pop[0].cost" and the final 
+#         corresponding fitness is in "parent_pop[0].reward" and the final 
 #         mutation strength is in "parent_pop[0].sigma"
 
 if __name__ == "__main__":
