@@ -48,16 +48,16 @@ namespace botsim {
 
         public:
             Sphere(double initial_radius,
-                   Eigen::Vector3d initial_position,
-                   Eigen::Vector4d initial_angle,
-                   Eigen::Vector3d initial_velocity,
-                   Eigen::Vector3d initial_angular_velocity,
-                   Eigen::Vector3d initial_inertia,
+                   const Eigen::Vector3d & initial_position,
+                   const Eigen::Vector4d & initial_angle,
+                   const Eigen::Vector3d & initial_velocity,
+                   const Eigen::Vector3d & initial_angular_velocity,
+                   const Eigen::Vector3d & initial_inertia,
                    double mass,
                    double friction=0.5,
                    double rolling_friction=0.,
                    double restitution=0.,
-                   std::string name="");
+                   const std::string & name="");
 
             ~Sphere();
 
