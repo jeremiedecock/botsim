@@ -131,7 +131,7 @@ botsim::BulletEnvironment::BulletEnvironment(
 
     // Parts
     for(part_it = this->partSet.begin() ; part_it != this->partSet.end() ; part_it++) {
-        std::cout << "Add " << (*part_it)->getName() << std::endl;
+        //std::cout << "Add " << (*part_it)->getName() << std::endl;
         this->dynamicsWorld->addRigidBody((*part_it)->getRigidBody());
     }
 
