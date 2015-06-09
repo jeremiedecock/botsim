@@ -41,7 +41,7 @@ namespace botsim {
 
             virtual ~Motor();
 
-            void setAngularVelocity(double target_velocity);
+            void setAngularVelocity(const double & target_velocity);
 
             std::string getName() const;
 

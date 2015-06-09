@@ -65,7 +65,7 @@ botsim::Motor::~Motor() {
     // TODO
 }
 
-void botsim::Motor::setAngularVelocity(double target_velocity) {
+void botsim::Motor::setAngularVelocity(const double & target_velocity) {
     if(btHingeConstraint * hinge_constraint = dynamic_cast<btHingeConstraint *>(this->bulletTypedConstraint)) {
         bool enable_motor = true;        // TODO
         double max_motor_impulse = 5000.;   // TODO
