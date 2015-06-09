@@ -37,9 +37,9 @@ void botsim::BulletEnvironment::tickCallback(btDynamicsWorld * world, btScalar t
 
 
 botsim::BulletEnvironment::BulletEnvironment(
-        std::set<botsim::Object *> object_set,
-        std::set<botsim::Part *> part_set,
-        std::set<botsim::Controller *> controller_set,
+        const std::set<botsim::Object *> & object_set,
+        const std::set<botsim::Part *> & part_set,
+        const std::set<botsim::Controller *> & controller_set,
         double bullet_time_step_duration_sec,
         double bullet_tick_duration_sec,
         int bullet_max_ticks_per_time_step,
@@ -188,7 +188,7 @@ void botsim::BulletEnvironment::run() {
 /**
  *
  */
-void botsim::BulletEnvironment::stepSimulation(const double time_step_duration_sec) {
+void botsim::BulletEnvironment::stepSimulation(const double & time_step_duration_sec) {
     this->elapsedSimulationTimeSec += time_step_duration_sec;
 
     btScalar bullet_time_step_duration_sec = btScalar(time_step_duration_sec);

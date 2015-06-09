@@ -97,9 +97,9 @@ namespace botsim {
             void notifyTimeStep();
 
         public:
-            BulletEnvironment(std::set<botsim::Object *> object_set,
-                              std::set<botsim::Part *> part_set,
-                              std::set<botsim::Controller *> controller_set,
+            BulletEnvironment(const std::set<botsim::Object *> & object_set,
+                              const std::set<botsim::Part *> & part_set,
+                              const std::set<botsim::Controller *> & controller_set,
                               double bullet_time_step_duration_sec=-1.0,
                               double bullet_tick_duration_sec=0.003,
                               int bullet_max_ticks_per_time_step=1000,
@@ -111,7 +111,7 @@ namespace botsim {
 
             void run();
 
-            void stepSimulation(const double time_step_sec);
+            void stepSimulation(const double & time_step_sec);
 
             void stepSimulation();
 
