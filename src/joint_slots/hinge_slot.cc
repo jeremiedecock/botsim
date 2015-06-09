@@ -9,15 +9,12 @@
 
 #include "hinge_slot.h"
 
-botsim::HingeSlot::HingeSlot(Eigen::Vector3d _pivot,
-                                Eigen::Vector3d _axis) : 
-                                    pivot(_pivot),
-                                    axis(_axis) {
-}
+botsim::HingeSlot::HingeSlot(const Eigen::Vector3d & _pivot,
+                             const Eigen::Vector3d & _axis) : 
+                                 pivot(_pivot),
+                                 axis(_axis) { }
 
-botsim::HingeSlot::~HingeSlot() {
-    // TODO
-}
+botsim::HingeSlot::~HingeSlot() { }
 
 Eigen::Vector3d botsim::HingeSlot::getPivot() const {
     return this->pivot;

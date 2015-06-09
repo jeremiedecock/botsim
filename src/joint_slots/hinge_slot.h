@@ -23,8 +23,8 @@ namespace botsim {
             Eigen::Vector3d axis;
 
         public:
-            HingeSlot(Eigen::Vector3d pivot,
-                      Eigen::Vector3d axis);
+            HingeSlot(const Eigen::Vector3d & pivot,
+                      const Eigen::Vector3d & axis);
 
             virtual ~HingeSlot();
 
