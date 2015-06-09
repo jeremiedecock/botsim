@@ -25,17 +25,17 @@
 
 int botsim::Box::numInstances = 0;
 
-botsim::Box::Box(Eigen::Vector3d initial_dimension,
-                    Eigen::Vector3d initial_position,
-                    Eigen::Vector4d initial_angle,
-                    Eigen::Vector3d initial_velocity,
-                    Eigen::Vector3d initial_angular_velocity,
-                    Eigen::Vector3d initial_inertia,
-                    double mass,
-                    double friction,
-                    double rolling_friction,
-                    double restitution,
-                    std::string name) {
+botsim::Box::Box(const Eigen::Vector3d & initial_dimension,
+                 const Eigen::Vector3d & initial_position,
+                 const Eigen::Vector4d & initial_angle,
+                 const Eigen::Vector3d & initial_velocity,
+                 const Eigen::Vector3d & initial_angular_velocity,
+                 const Eigen::Vector3d & initial_inertia,
+                 double mass,
+                 double friction,
+                 double rolling_friction,
+                 double restitution,
+                 const std::string & name) {
 
     this->initialDimension = initial_dimension;
     this->initialPosition = initial_position;

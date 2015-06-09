@@ -47,17 +47,17 @@ namespace botsim {
             static int numInstances;
 
         public:
-            Box(Eigen::Vector3d initial_dimension,
-                Eigen::Vector3d initial_position,
-                Eigen::Vector4d initial_angle,
-                Eigen::Vector3d initial_velocity,
-                Eigen::Vector3d initial_angular_velocity,
-                Eigen::Vector3d initial_inertia,
+            Box(const Eigen::Vector3d & initial_dimension,
+                const Eigen::Vector3d & initial_position,
+                const Eigen::Vector4d & initial_angle,
+                const Eigen::Vector3d & initial_velocity,
+                const Eigen::Vector3d & initial_angular_velocity,
+                const Eigen::Vector3d & initial_inertia,
                 double mass,
                 double friction=0.5,
                 double rolling_friction=0.,
                 double restitution=0.,
-                std::string name="");
+                const std::string & name="");
 
             ~Box();
 
