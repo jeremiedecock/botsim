@@ -30,7 +30,7 @@ namespace botsim {
             std::map<std::string, std::vector<double> > dataMap;
 
         public:
-            LoggerTimeStepsPartsJson(std::set<botsim::Part *> observed_part_set, //=std::set<botsim::Part *>(),
+            LoggerTimeStepsPartsJson(const std::set<botsim::Part *> & observed_part_set, //=std::set<botsim::Part *>(),
                                      std::string filepath="");
 
             ~LoggerTimeStepsPartsJson();

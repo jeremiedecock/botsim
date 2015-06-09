@@ -14,7 +14,8 @@
 
 const std::string DEFAULT_FILE_PATH = "time_steps_parts.json"; // TODO ?
 
-botsim::LoggerTimeStepsPartsJson::LoggerTimeStepsPartsJson(std::set<botsim::Part *> observed_part_set, std::string filepath) {
+botsim::LoggerTimeStepsPartsJson::LoggerTimeStepsPartsJson(const std::set<botsim::Part *> & observed_part_set,
+                                                           std::string filepath) {
     // Set the observed parts set
     this->observedPartSet = observed_part_set;
 
