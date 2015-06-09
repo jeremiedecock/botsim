@@ -53,7 +53,7 @@ directory and type:
 mkdir build
 cd build
 cmake ..
-ccmake
+ccmake .
 ```
 
 Then select the desired compilation targets and options then press 'c' and 'g'.
