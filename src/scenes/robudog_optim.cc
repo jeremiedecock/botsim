@@ -43,6 +43,7 @@
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
 
+#include <fstream>
 #include <iostream>
 #include <set>
 #include <string>
@@ -188,7 +189,12 @@ int main(int argc, char * argv[]) {
     std::cout << "Delta: " << robudog_trunk_position_delta << std::endl;
     std::cout << "Score: " << score << std::endl;
 
-    // TODO: write the score in the output file
+    // Write the score in a file
+    
+    std::string score_file_name = controller_parameters_file_name_opt + ".score";
+    std::ofstream ofs(score_file_name);
+    ofs << score << std::endl;
+    ofs.close();
 
     // Clean Bullet ///////////////////////////////////////////////////////////
 
