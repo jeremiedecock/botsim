@@ -25,7 +25,7 @@ system:
 Debian 8 (Jessie) users should install the following Debian packages to compile
 and run Botsim.org:
 
-* libboost-dev;
+* libboost-program-options-dev;
 * libbullet-dev;
 * libbullet-extras-dev;
 * libeigen3-dev;
