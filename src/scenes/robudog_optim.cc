@@ -47,6 +47,8 @@ namespace po = boost::program_options;
 #include <set>
 #include <string>
 
+#include <cassert>
+
 #include <Eigen/Dense>
 
 static double ground_friction = 1.1;       // 0.5
@@ -148,15 +150,15 @@ int main(int argc, char * argv[]) {
     botsim::Part * p_trunk = NULL;
 
     std::set<botsim::Part *>::iterator part_it;
+    std::set<botsim::Part *> part_set = p_robudog->getPartSet();
 
-    //std::cout << p_robudog->getPartSet().size() << std::endl;
-    for(part_it = p_robudog->getPartSet().begin() ; part_it != p_robudog->getPartSet().end() ; part_it++) {
-        //std::cout << "- " << (*part_it)->getName() << std::endl;
+    for(part_it = part_set.begin() ; part_it != part_set.end() ; part_it++) {
         if((*part_it)->getName() == "trunk") {
-            std::cout << "OKKKKKKKKKKK" << std::endl;
             p_trunk = *part_it;
         }
     }
+
+    assert(p_trunk != NULL);
 
     Eigen::Vector3d initial_robudog_trunk_position = p_trunk->getPosition();
 
@@ -178,12 +180,12 @@ int main(int argc, char * argv[]) {
     ///////////////////////////////////////////////////////////////////////////
 
     Eigen::Vector3d final_robudog_trunk_position = p_trunk->getPosition();
-    Eigen::Vector3d delta = final_robudog_trunk_position - initial_robudog_trunk_position;
-    double score = delta.norm();
+    Eigen::Vector3d robudog_trunk_position_delta = final_robudog_trunk_position - initial_robudog_trunk_position;
+    double score = robudog_trunk_position_delta.norm();
 
     std::cout << "Initial position: " << initial_robudog_trunk_position << std::endl;
     std::cout << "Final position: " << final_robudog_trunk_position << std::endl;
-    std::cout << "Delta: " << delta << std::endl;
+    std::cout << "Delta: " << robudog_trunk_position_delta << std::endl;
     std::cout << "Score: " << score << std::endl;
 
     // TODO: write the score in the output file
