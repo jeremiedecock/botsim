@@ -1,3 +1,4 @@
 *.o
+*.score
 doxygen
 build/*
