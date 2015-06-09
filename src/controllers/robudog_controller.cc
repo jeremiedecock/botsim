@@ -89,7 +89,7 @@ void botsim::RobudogController::updateActuators() {
             double phase =     this->parameters[actuator_index * 3 + 2];
 
             double signal_value = this->computeSignalValue(simulation_duration_sec, amplitude, frequency, phase);
-            std::cout << simulation_duration_sec << " : " << motor_actuator->getName() << " = " <<  signal_value << std::endl;
+            //std::cout << simulation_duration_sec << " : " << motor_actuator->getName() << " = " <<  signal_value << std::endl;
 
             motor_actuator->setAngularVelocity(signal_value);
         } else {
