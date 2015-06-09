@@ -31,7 +31,7 @@ namespace botsim {
 
         public:
             Clock(botsim::BulletEnvironment * bullet_environment,
-                  std::string _name="");
+                  const std::string & _name="");
 
             ~Clock();
 

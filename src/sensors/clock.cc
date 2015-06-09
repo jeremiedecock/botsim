@@ -14,11 +14,9 @@
 #include <iostream>
 
 botsim::Clock::Clock(botsim::BulletEnvironment * bullet_environment,
-                        std::string _name) :
-                            bulletEnvironment(bullet_environment),
-                            name(_name) {
-    // TODO
-}
+                     const std::string & _name) :
+                         bulletEnvironment(bullet_environment),
+                         name(_name) { }
 
 botsim::Clock::~Clock() {
     // TODO
