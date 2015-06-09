@@ -35,16 +35,16 @@ namespace botsim {
              * \param[in] phase      Specifies (in radians) where in its cycle the oscillation is at t = 0.
              * \param[in] name       The name of this instance.
              */
-            SinusoidalSignal(std::set<botsim::Actuator *> actuator_set,
-                             std::set<botsim::Sensor *> sensor_set,
-                             double _amplitude,
-                             double _frequency,
-                             double _phase,
+            SinusoidalSignal(const std::set<botsim::Actuator *> & actuator_set,
+                             const std::set<botsim::Sensor *> & sensor_set,
+                             const double & _amplitude,
+                             const double & _frequency,
+                             const double & _phase,
                              std::string _name="");
 
             ~SinusoidalSignal();
 
-            double computeSignalValue(double time) const;
+            double computeSignalValue(const double & time) const;
 
             void updateActuators();
 
