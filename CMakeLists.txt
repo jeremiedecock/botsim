@@ -65,6 +65,16 @@ if(USE_GCOV)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-arcs -ftest-coverage"  )
 endif(USE_GCOV)
 
+# Setup vectorization in Eigen3
+# See http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html
+option(USE_EIGEN_VECTORIZATION "Enable Eigen3 vectorization (see http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html)" OFF)
+if(USE_EIGEN_VECTORIZATION)
+    # DO NOTHING
+else(USE_EIGEN_VECTORIZATION)
+    add_definitions(-DEIGEN_DONT_VECTORIZE)
+    add_definitions(-DEIGEN_DISABLE_UNALIGNED_ARRAY_ASSERT)
+endif(USE_EIGEN_VECTORIZATION)
+
 ## NATIVE OPTIMIZATIONS (GCC ONLY)
 #option(GCC_NATIVE "Optimize executable for modern hosts CPUs (GCC ONLY)" OFF)
 #if(GCC_NATIVE)
