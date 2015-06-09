@@ -31,10 +31,10 @@ namespace botsim {
             std::set<botsim::Actuator *> actuatorSet;
 
         public:
-            Object(std::set<botsim::Part *> part_set,
-                   std::set<botsim::Joint *> joint_set,
-                   std::set<botsim::Actuator *> actuator_set,
-                   std::string _name="");
+            Object(const std::set<botsim::Part *> & part_set,
+                   const std::set<botsim::Joint *> & joint_set,
+                   const std::set<botsim::Actuator *> & actuator_set,
+                   const std::string & _name="");
 
             std::set<botsim::Part *> getPartSet() const;
 
