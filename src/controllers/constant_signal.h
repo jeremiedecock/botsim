@@ -21,9 +21,9 @@ namespace botsim {
             std::string name;     // The name of this instance.
 
         public:
-            ConstantSignal(std::set<botsim::Actuator *> actuator_set,
-                           std::set<botsim::Sensor *> sensor_set,
-                           double _constant_value,
+            ConstantSignal(const std::set<botsim::Actuator *> & actuator_set,
+                           const std::set<botsim::Sensor *> & sensor_set,
+                           const double & _const_value,
                            std::string _name="");
 
             ~ConstantSignal();

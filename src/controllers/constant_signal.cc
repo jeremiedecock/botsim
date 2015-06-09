@@ -15,14 +15,14 @@
 
 #include <iostream>
 
-botsim::ConstantSignal::ConstantSignal(std::set<botsim::Actuator *> actuator_set,
-                                          std::set<botsim::Sensor *> sensor_set,
-                                          double _const_value,
-                                          std::string _name) :
-                                            constantValue(_const_value),
-                                            name(_name) {
+botsim::ConstantSignal::ConstantSignal(const std::set<botsim::Actuator *> & actuator_set,
+                                       const std::set<botsim::Sensor *> & sensor_set,
+                                       const double & _const_value,
+                                       std::string _name) :
+                                           constantValue(_const_value),
+                                           name(_name) {
     this->actuatorSet = actuator_set;
-    this->sensorSet   = sensor_set;
+    this->sensorSet = sensor_set;
 }
 
 botsim::ConstantSignal::~ConstantSignal() {
