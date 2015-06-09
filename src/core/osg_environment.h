@@ -97,7 +97,7 @@ namespace botsim {
              * osgGA::GUIEventAdapter  supplies the received events
              * osgGA::GUIActionAdapter parameter for feedback
              */
-            virtual bool handle(const osgGA::GUIEventAdapter& event_adapter, osgGA::GUIActionAdapter& action_adapter);
+            virtual bool handle(const osgGA::GUIEventAdapter & event_adapter, osgGA::GUIActionAdapter & action_adapter);
 
         private:
             /**
