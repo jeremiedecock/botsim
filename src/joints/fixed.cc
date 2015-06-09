@@ -18,10 +18,10 @@ static const double bias_factor = 0.3;
 static const double relaxation_factor = 1.0;
 
 botsim::Fixed::Fixed(botsim::Part * part1,
-                        botsim::Part * part2,
-                        botsim::FixedSlot * joint_slot_for_part1,
-                        botsim::FixedSlot * joint_slot_for_part2,
-                        std::string _name) {
+                     botsim::Part * part2,
+                     botsim::FixedSlot * joint_slot_for_part1,
+                     botsim::FixedSlot * joint_slot_for_part2,
+                     const std::string & _name) {
 
     this->name = _name;
 
@@ -42,8 +42,8 @@ botsim::Fixed::Fixed(botsim::Part * part1,
 }
 
 botsim::Fixed::Fixed(botsim::Part * part,
-                        botsim::FixedSlot * joint_slot,
-                        std::string _name) {
+                     botsim::FixedSlot * joint_slot,
+                     const std::string & _name) {
 
     this->name = _name;
 

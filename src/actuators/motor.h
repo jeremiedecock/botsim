@@ -33,15 +33,15 @@ namespace botsim {
                   botsim::Part * part2,
                   botsim::HingeSlot * joint_slot_for_part1,
                   botsim::HingeSlot * joint_slot_for_part2,
-                  std::string _name="");
+                  const std::string & _name="");
 
             Motor(botsim::Part * part,
                   botsim::HingeSlot * joint_slot,
-                  std::string _name="");
+                  const std::string & _name="");
 
             virtual ~Motor();
 
-            void setAngularVelocity(const double & target_velocity);
+            void setAngularVelocity(double target_velocity);
 
             std::string getName() const;
 

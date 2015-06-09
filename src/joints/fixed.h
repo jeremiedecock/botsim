@@ -26,11 +26,11 @@ namespace botsim {
                   botsim::Part * part2,
                   botsim::FixedSlot * joint_slot_for_part1,
                   botsim::FixedSlot * joint_slot_for_part2,
-                  std::string _name="");
+                  const std::string & _name="");
 
             Fixed(botsim::Part * part,
                   botsim::FixedSlot * joint_slot,
-                  std::string _name="");
+                  const std::string & _name="");
 
             ~Fixed();
 

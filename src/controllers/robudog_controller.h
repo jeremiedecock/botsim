@@ -65,7 +65,7 @@ namespace botsim {
             RobudogController(const std::set<botsim::Actuator *> & actuator_set,
                               const std::set<botsim::Sensor *> & sensor_set,
                               const Eigen::Matrix< double, 24, 1> & _parameters,
-                              std::string _name="");
+                              const std::string & _name="");
 
             ~RobudogController();
 

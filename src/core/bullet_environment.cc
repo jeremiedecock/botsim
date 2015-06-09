@@ -188,7 +188,7 @@ void botsim::BulletEnvironment::run() {
 /**
  *
  */
-void botsim::BulletEnvironment::stepSimulation(const double & time_step_duration_sec) {
+void botsim::BulletEnvironment::stepSimulation(double time_step_duration_sec) {
     this->elapsedSimulationTimeSec += time_step_duration_sec;
 
     btScalar bullet_time_step_duration_sec = btScalar(time_step_duration_sec);

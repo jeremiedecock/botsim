@@ -12,10 +12,10 @@
 #include "tools/tools.h"
 
 botsim::PointToPoint::PointToPoint(botsim::Part * part1,
-                                      botsim::Part * part2,
-                                      botsim::PointToPointSlot * joint_slot_for_part1,
-                                      botsim::PointToPointSlot * joint_slot_for_part2,
-                                      std::string _name) {
+                                   botsim::Part * part2,
+                                   botsim::PointToPointSlot * joint_slot_for_part1,
+                                   botsim::PointToPointSlot * joint_slot_for_part2,
+                                   const std::string & _name) {
 
     this->name = _name;
 
@@ -31,8 +31,8 @@ botsim::PointToPoint::PointToPoint(botsim::Part * part1,
 }
 
 botsim::PointToPoint::PointToPoint(botsim::Part * part,
-                                      botsim::PointToPointSlot * joint_slot,
-                                      std::string _name) {
+                                   botsim::PointToPointSlot * joint_slot,
+                                   const std::string & _name) {
 
     this->name = _name;
 

@@ -26,11 +26,11 @@ namespace botsim {
                          botsim::Part * part2,
                          botsim::PointToPointSlot * joint_slot_for_part1,
                          botsim::PointToPointSlot * joint_slot_for_part2,
-                         std::string _name="");
+                         const std::string & _name="");
 
             PointToPoint(botsim::Part * part,
                          botsim::PointToPointSlot * joint_slot,
-                         std::string _name="");
+                         const std::string & _name="");
 
             ~PointToPoint();
 

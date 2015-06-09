@@ -16,7 +16,7 @@ botsim::Motor::Motor(botsim::Part * part1,
                         botsim::Part * part2,
                         botsim::HingeSlot * joint_slot_for_part1,
                         botsim::HingeSlot * joint_slot_for_part2,
-                        std::string _name) //:
+                        const std::string & _name) //:
                             // call superclass (hinge) constructor
                             //botsim::Hinge(part1, part2, pivot_in_part1, pivot_in_part2, axis_in_part1, axis_in_part2, _name) {
                         {
@@ -41,11 +41,11 @@ botsim::Motor::Motor(botsim::Part * part1,
 }
 
 botsim::Motor::Motor(botsim::Part * part,
-                        botsim::HingeSlot * joint_slot,
-                        std::string _name) //:
-                            // call superclass (hinge) constructor
-                            //botsim::Hinge(part, pivot, axis, _name) {
-                            {
+                     botsim::HingeSlot * joint_slot,
+                     const std::string & _name) //:
+                         // call superclass (hinge) constructor
+                         //botsim::Hinge(part, pivot, axis, _name) {
+                         {
     // TODO ?
 
     this->name = _name;
@@ -65,7 +65,7 @@ botsim::Motor::~Motor() {
     // TODO
 }
 
-void botsim::Motor::setAngularVelocity(const double & target_velocity) {
+void botsim::Motor::setAngularVelocity(double target_velocity) {
     if(btHingeConstraint * hinge_constraint = dynamic_cast<btHingeConstraint *>(this->bulletTypedConstraint)) {
         bool enable_motor = true;        // TODO
         double max_motor_impulse = 5000.;   // TODO

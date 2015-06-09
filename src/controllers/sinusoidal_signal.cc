@@ -20,10 +20,10 @@ const static double PI = std::acos(-1);
 
 botsim::SinusoidalSignal::SinusoidalSignal(const std::set<botsim::Actuator *> & actuator_set,
                                            const std::set<botsim::Sensor *> & sensor_set,
-                                           const double & _amplitude,
-                                           const double & _frequency,
-                                           const double & _phase,
-                                           std::string _name) :
+                                           double _amplitude,
+                                           double _frequency,
+                                           double _phase,
+                                           const std::string & _name) :
                                                amplitude(_amplitude),
                                                frequency(_frequency),
                                                phase(_phase),
@@ -36,7 +36,7 @@ botsim::SinusoidalSignal::~SinusoidalSignal() {
     // TODO
 }
 
-double botsim::SinusoidalSignal::computeSignalValue(const double & time) const {
+double botsim::SinusoidalSignal::computeSignalValue(double time) const {
     double signal_value = this->amplitude * std::sin(2.0 * PI * this->frequency * time + this->phase);
 }
 

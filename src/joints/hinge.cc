@@ -12,10 +12,10 @@
 #include "tools/tools.h"
 
 botsim::Hinge::Hinge(botsim::Part * part1,
-                        botsim::Part * part2,
-                        botsim::HingeSlot * joint_slot_for_part1,
-                        botsim::HingeSlot * joint_slot_for_part2,
-                        std::string _name) {
+                     botsim::Part * part2,
+                     botsim::HingeSlot * joint_slot_for_part1,
+                     botsim::HingeSlot * joint_slot_for_part2,
+                     const std::string & _name) {
 
     this->name = _name;
 
@@ -36,8 +36,8 @@ botsim::Hinge::Hinge(botsim::Part * part1,
 }
 
 botsim::Hinge::Hinge(botsim::Part * part,
-                        botsim::HingeSlot * joint_slot,
-                        std::string _name) {
+                     botsim::HingeSlot * joint_slot,
+                     const std::string & _name) {
 
     this->name = _name;
 

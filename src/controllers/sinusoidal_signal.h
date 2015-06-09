@@ -37,14 +37,14 @@ namespace botsim {
              */
             SinusoidalSignal(const std::set<botsim::Actuator *> & actuator_set,
                              const std::set<botsim::Sensor *> & sensor_set,
-                             const double & _amplitude,
-                             const double & _frequency,
-                             const double & _phase,
-                             std::string _name="");
+                             double _amplitude,
+                             double _frequency,
+                             double _phase,
+                             const std::string & _name="");
 
             ~SinusoidalSignal();
 
-            double computeSignalValue(const double & time) const;
+            double computeSignalValue(double time) const;
 
             void updateActuators();
 

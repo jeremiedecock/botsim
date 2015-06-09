@@ -23,8 +23,8 @@ namespace botsim {
         public:
             ConstantSignal(const std::set<botsim::Actuator *> & actuator_set,
                            const std::set<botsim::Sensor *> & sensor_set,
-                           const double & _const_value,
-                           std::string _name="");
+                           double _const_value,
+                           const std::string & _name="");
 
             ~ConstantSignal();
 

@@ -111,7 +111,7 @@ namespace botsim {
 
             void run();
 
-            void stepSimulation(const double & time_step_sec);
+            void stepSimulation(double time_step_sec);
 
             void stepSimulation();
 

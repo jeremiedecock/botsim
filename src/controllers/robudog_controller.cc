@@ -21,7 +21,7 @@ const static double PI = std::acos(-1);
 botsim::RobudogController::RobudogController(const std::set<botsim::Actuator *> & actuator_set,
                                              const std::set<botsim::Sensor *> & sensor_set,
                                              const Eigen::Matrix< double, 24, 1> & _parameters,
-                                             std::string _name) :
+                                             const std::string & _name) :
                                                  parameters(_parameters),
                                                  name(_name) {
     this->actuatorSet = actuator_set;
