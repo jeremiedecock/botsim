@@ -27,7 +27,7 @@ namespace botsim {
             std::map<std::string, std::ofstream *> fileMap;
 
         public:
-            LoggerTimeStepsPartsDat(std::set<botsim::Part *> observed_part_set);
+            LoggerTimeStepsPartsDat(const std::set<botsim::Part *> & observed_part_set);
 
             ~LoggerTimeStepsPartsDat();
 

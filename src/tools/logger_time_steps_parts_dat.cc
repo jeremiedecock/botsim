@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-botsim::LoggerTimeStepsPartsDat::LoggerTimeStepsPartsDat(std::set<botsim::Part *> observed_part_set) {
+botsim::LoggerTimeStepsPartsDat::LoggerTimeStepsPartsDat(const std::set<botsim::Part *> & observed_part_set) {
     // Set the observed parts set
     this->observedPartSet = observed_part_set;
     
