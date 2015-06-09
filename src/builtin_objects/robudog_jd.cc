@@ -46,8 +46,8 @@ static const double foot_radius = 1.25;  // TODO !!!
 // TODO: put this as a static method in the "Fixed" class.
 void addFixedJoint(std::set<botsim::Joint *> & joint_set,
                    botsim::Part * p_part,
-                   std::string slot_key,
-                   std::string joint_name) {
+                   const std::string & slot_key,
+                   const std::string & joint_name) {
 
         botsim::JointSlot * p_joint_slot = p_part->getJointSlot(slot_key);
         if(botsim::FixedSlot * p_fixed_slot = dynamic_cast<botsim::FixedSlot *>(p_joint_slot)) {
@@ -62,8 +62,8 @@ void addFixedJoint(std::set<botsim::Joint *> & joint_set,
 // TODO: put this as a static method in the "PointToPoint" class.
 void addP2PJoint(std::set<botsim::Joint *> & joint_set,
                  botsim::Part * p_part,
-                 std::string slot_key,
-                 std::string joint_name) {
+                 const std::string & slot_key,
+                 const std::string & joint_name) {
 
         botsim::JointSlot * p_joint_slot = p_part->getJointSlot(slot_key);
         if(botsim::PointToPointSlot * p_p2p_slot = dynamic_cast<botsim::PointToPointSlot *>(p_joint_slot)) {
@@ -79,9 +79,9 @@ void addP2PJoint(std::set<botsim::Joint *> & joint_set,
 void addMotor(std::set<botsim::Actuator *> & actuator_set,
               botsim::Part * p_part1,
               botsim::Part * p_part2,
-              std::string slot_key1,
-              std::string slot_key2,
-              std::string actuator_name) {
+              const std::string & slot_key1,
+              const std::string & slot_key2,
+              const std::string & actuator_name) {
 
         botsim::JointSlot * p_joint_slot1 = p_part1->getJointSlot(slot_key1);
         botsim::HingeSlot * p_hinge_slot1 = dynamic_cast<botsim::HingeSlot *>(p_joint_slot1);
@@ -102,8 +102,8 @@ void addMotor(std::set<botsim::Actuator *> & actuator_set,
 // TODO: put this as a static method in the "Hinge" class (pb: actuator_set vs joint_set -> template ? ou mettre la version actuator dans Motor ?).
 void addMotor(std::set<botsim::Actuator *> & actuator_set,
               botsim::Part * p_part,
-              std::string slot_key,
-              std::string actuator_name) {
+              const std::string & slot_key,
+              const std::string & actuator_name) {
 
         botsim::JointSlot * p_joint_slot = p_part->getJointSlot(slot_key);
         botsim::HingeSlot * p_hinge_slot = dynamic_cast<botsim::HingeSlot *>(p_joint_slot);
@@ -117,7 +117,7 @@ void addMotor(std::set<botsim::Actuator *> & actuator_set,
 }
 
 
-botsim::Object * botsim::make_robudog_jd(const Eigen::Vector3d object_initial_position, std::string object_name) {
+botsim::Object * botsim::make_robudog_jd(const Eigen::Vector3d & object_initial_position, const std::string & object_name) {
 
     /*
      * ROBUDOG PARTS
