@@ -36,8 +36,8 @@ static const bool DEFAULT_USE_VERBOSE_MODE = false;
  *
  */
 botsim::CommonOptionsParser::CommonOptionsParser(int argc,
-                                                    char * argv[],
-                                                    const po::options_description & local_options_desc) {
+                                                 char * argv[],
+                                                 const po::options_description & local_options_desc) {
 
     // Set some default values
     
@@ -88,10 +88,11 @@ botsim::CommonOptionsParser::CommonOptionsParser(int argc,
     //po::variables_map this->variableMap;
 
     po::store(po::parse_command_line(argc, argv, local_and_global_options_desc), this->variableMap);
-    po::notify(this->variableMap);
+    //po::notify(this->variableMap); // See http://stackoverflow.com/questions/5395503/required-and-optional-arguments-using-boost-library-program-options
 
     /*
-     * Parse config file
+     * Special treatement for the "config" option.
+     * Parse config file.
      */
 
     if(this->variableMap.count("config")) {
@@ -113,18 +114,37 @@ botsim::CommonOptionsParser::CommonOptionsParser(int argc,
     }
 
     /*
-     * Assign options value
+     * Special treatement for the "help" option.
      */
 
-    // Help
     if(this->variableMap.count("help") && !this->exit) {
-        std::cout << "This is a snippet using botsim.org, a robotic simulation framework." << std::endl << std::endl;
+        std::cout << "Botsim.org, a robotic simulation framework." << std::endl << std::endl;
         std::cout <<   local_and_global_options_desc << std::endl;
 
         this->exit = true;
         this->exitValue = 0;
         //return;
     }
+
+    /*
+     * Raise any errors encountered.
+     *
+     * See http://stackoverflow.com/questions/5395503/required-and-optional-arguments-using-boost-library-program-options
+     */
+
+    if(!this->exit) {
+        try {
+            po::notify(this->variableMap); // See http://stackoverflow.com/questions/5395503/required-and-optional-arguments-using-boost-library-program-options
+        } catch(std::exception & e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+            this->exit = true;
+            this->exitValue = 1;
+        }
+    }
+
+    /*
+     * Assign options value
+     */
 
 //    // Setup full screen mode
 //    if(this->variableMap.count("full_screen")) {
