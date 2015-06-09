@@ -22,7 +22,7 @@ namespace botsim {
             Eigen::Vector3d pivot;
 
         public:
-            FixedSlot(Eigen::Vector3d pivot);
+            FixedSlot(const Eigen::Vector3d & pivot);
 
             virtual ~FixedSlot();
 
