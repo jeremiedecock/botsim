@@ -14,7 +14,9 @@
 
 namespace botsim {
 
-    botsim::Part * make_robudog_trunk(const Eigen::Vector3d initial_position, const Eigen::Vector4d initial_angle, std::string name);
+    botsim::Part * make_robudog_trunk(const Eigen::Vector3d & initial_position,
+                                      const Eigen::Vector4d & initial_angle,
+                                      const std::string & name);
 
 }
 

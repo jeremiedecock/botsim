@@ -35,20 +35,22 @@ static double friction = 0.5;
 static double rolling_friction = 0.;
 static double restitution = 0.;
 
-botsim::Part * botsim::make_robudog_trunk(const Eigen::Vector3d initial_position, const Eigen::Vector4d initial_angle, std::string name) {
+botsim::Part * botsim::make_robudog_trunk(const Eigen::Vector3d & initial_position,
+                                          const Eigen::Vector4d & initial_angle,
+                                          const std::string & name) {
 
     // Make the part
     botsim::Part * p_part = new botsim::Box(initial_dimension,
-                                                  initial_position,
-                                                  initial_angle,
-                                                  initial_velocity,
-                                                  initial_angular_velocity,
-                                                  initial_inertia,
-                                                  mass,
-                                                  friction,
-                                                  rolling_friction,
-                                                  restitution,
-                                                  name);
+                                            initial_position,
+                                            initial_angle,
+                                            initial_velocity,
+                                            initial_angular_velocity,
+                                            initial_inertia,
+                                            mass,
+                                            friction,
+                                            rolling_friction,
+                                            restitution,
+                                            name);
     
 
     const double dim_x = initial_dimension[0];
