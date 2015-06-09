@@ -98,7 +98,7 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF) 
 
 # Find and setup Boost for this project
-find_package(Boost 1.55.0 COMPONENTS program_options)
+find_package(Boost 1.54.0 COMPONENTS program_options)
 
 # Boost includes
 include_directories(${Boost_INCLUDE_DIRS})
