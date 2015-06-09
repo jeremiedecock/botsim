@@ -95,11 +95,11 @@ double botsim::Part::getRestitution() const {
     return this->restitution;
 }
 
-void botsim::Part::addJointSlot(std::string key, botsim::JointSlot * value) {
+void botsim::Part::addJointSlot(const std::string & key, botsim::JointSlot * value) {
     this->jointSlotMap[key] = value;
 }
 
-botsim::JointSlot * botsim::Part::getJointSlot(std::string key) {
+botsim::JointSlot * botsim::Part::getJointSlot(const std::string & key) {
     std::map<std::string, botsim::JointSlot *>::iterator it;
     botsim::JointSlot * p_joint_slot;
 

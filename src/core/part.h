@@ -93,9 +93,9 @@ namespace botsim {
 
             double getRestitution() const;
 
-            void addJointSlot(std::string key, botsim::JointSlot * value);
+            void addJointSlot(const std::string & key, botsim::JointSlot * value);
 
-            botsim::JointSlot * getJointSlot(std::string key);
+            botsim::JointSlot * getJointSlot(const std::string & key);
 
         protected:
             /**
