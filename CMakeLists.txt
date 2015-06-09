@@ -67,7 +67,7 @@ endif(USE_GCOV)
 
 # Setup vectorization in Eigen3
 # See http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html
-option(USE_EIGEN_VECTORIZATION "Enable Eigen3 vectorization (see http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html)" OFF)
+option(USE_EIGEN_VECTORIZATION "Enable Eigen3 vectorization (see http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html)" ON)
 if(USE_EIGEN_VECTORIZATION)
     # DO NOTHING
 else(USE_EIGEN_VECTORIZATION)
