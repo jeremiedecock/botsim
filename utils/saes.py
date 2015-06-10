@@ -11,6 +11,7 @@ https://homepages.fhv.at/hgb/downloads/mu_mu_I_lambda-ES.oct
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 import random
 
 
@@ -52,7 +53,8 @@ def robudog(indiv):
             print(xi, end=' ', file=fd)
 
     # run botsim.org
-    # TODO
+    cmd = "./robudog_optim --controller_filename " + param_file_name + " --head_less=1 --simulation_duration_sec=30 --time_step_duration_sec=0.03 --tick_duration_sec=0.003"
+    os.system(cmd)
 
     # retrive the score
     with open(score_file_name, "r") as fd:
@@ -99,6 +101,9 @@ def main():
     global gen_index
     global indiv_index
 
+    fd_log = open("log", "w")
+    print("# gen_index   indiv_index   reward", file=fd_log)
+
     # Initialization
     n = X_INIT.shape[0]         # determine search space dimensionality n   
     tau = 1. / math.sqrt(2.*n)  # self-adaptation learning rate
@@ -109,6 +114,7 @@ def main():
     # Evolution loop of the (mu/mu_I, lambda)-sigma-SA-ES
     while parent_pop[0].sigma > SIGMA_MIN:
         gen_index += 1
+
         print("Generation", gen_index)
 
         offspring_pop = []
@@ -122,10 +128,14 @@ def main():
             offspring_pop.append(offspring)
 
             print(" Individual", indiv_index, "score", offspring.reward)
+            print(gen_index, indiv_index, offspring.reward, file=fd_log)
+
         parent_pop = select_individuals(offspring_pop)
 
         print(" Best individual", parent_pop[0].x, "score", parent_pop[0].reward)
         #print(parent_pop[0])
+
+    fd_log.close()
 
 # Remark: Final approximation of the optimizer is in "parent_pop[0].x"
 #         corresponding fitness is in "parent_pop[0].reward" and the final 
