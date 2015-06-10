@@ -3,11 +3,37 @@ TODO
 Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/watch?v=BGAwRKPlpCw
 
 STEP 1: objets, actuateurs, contrôleurs
-+ créer une nouvelle scène avec 1 seul robudog qui écrit dans un fichier la distance parcourue (et le temps ?)
-+ motor: set limits (contraindre les angles)
-- réecrire ground -> plus grand, en plusieurs parties
-- régler les constantes physiques (mass, friction, torque, ...)
-- être capable de détecter et pénaliser les explosions de simulation
+- motor: set limits (contraindre les angles)
+- reécrire ground -> plus grand, en plusieurs parties
++ régler correctement les constantes physiques (mass, friction, couple des moteurs, ...)
++ être capable de détecter et pénaliser les explosions de simulation ; la
+  pénalité doit être graduelle et non binaire pour ne pas perturber les
+  algorithmes d'optimisation.
+  Soustraire au score ces pénalités (pondéré par un certain facteur fixé).
+  + 1er terme de pénalité: le robot a souvent tendance à voler après une
+    explosion => compter le nombre de secondes (ou de ticks ou
+    de timesteps) durant lesquelles le robot est au dessus d'un certain plan (ie
+    combien de temps il "vole" suite à une/des explosion(s) dans la simulation)
+    -> simple, graduel
+  + 2e terme de pénalité: faire la somme de tous les mouvements de
+    rotations (en radiant) du tronc sur chacun des 3 axes.
+    -> simple, graduel et favorise en plus les robots qui marchent droit
+  La classe "Valuer" qui fait ces calculs est un Listener (comme les log) du
+  tronc du robot (instance de Part donné en argument). RobudogValuer hérite
+  de l'interface "Valuer". RobudogValuer est instancié dans la fonction "main",
+  les autres modules n'ont pas besoin de connaitre cette classe.
+  C'est RobudogValuer qui va calculer la distance parcourue par le tronc,
+  les pénalités à appliquer et le score final pour la simulation.
+
++ modifier l'API de sorte que les paramètres puissent aussi déterminer 
+  la configuration physique du robot (angles de départ des actuateurs, etc.)
+  et pas seulement son contrôle. Comment distinguer/répartir proprement
+  les paramètres physique et les paramètres de contrôle ?
+
++ Régler le problème de vectorisation d'Eigen3 sur certaines plates-formes: http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html
+
+- Eigen3 / OpenSceneGraph license compatibility with MIT ??? -> ça ne pose problème que dans le cas de la redistribution des binaires with link static ???
+  - changer de licence ??? ((L)GPL ? CeCILL ? ou MIT ?)
 
 - "ConstantController" et "SinusoidController" prend en paramètre une map
   std::map<Actuator *, UnObjetOuUneStructureQuiContientLesParamPourLActuateurEnClé>
@@ -15,21 +41,18 @@ STEP 1: objets, actuateurs, contrôleurs
   Pour ConstantController: la valeur du signal.
   Pour SinusoidController: les paramètres amplitude, fréquence et phase.
 - mettre les attributs std::set<...> de Controller, BulletEnvironment et Object en public const (et supprimer les getters) ?
-  But: supprimer toute ambiguité sur le fait qu'ils soit constant -> ces
+  But: supprimer toute ambigüité sur le fait qu'ils soit constant -> ces
   attributs sont traités dans le constructeur, les modifier après coup est sans
   effet.
   Pb: Le constructeur de la classe Object modifie les partsSet (et jointSet
   ?)... -> faire en sorte que le set commun parts+objects::parts ne soit plus
-  qu'une variable locale (et non plus un attribut) utilisée pour initialliser
+  qu'une variable locale (et non plus un attribut) utilisée pour initialiser
   btDynamicWorld ?
 ~ Créer une classe Controler: foncteur qui prend en entrée des percepts (temps, position, ...) et retourne une commande pour le/les actuateurs qu'il contrôle
     -> Controler: attaché à un Actuator ou un Objet complet (ie plusieurs actuateurs) ?
   Contrôleurs: classe "Controler" -> pattern listener ? : écoute les sensors et agit sur les actuators
     -> + permettre le contrôle des actuateurs depuis un processus distant ? (socket, rpc, ...)
 - Servomoteurs: classe "Actuator" qui hérite de la classe "HingeJoint" ???
-
-- renommer "botsim" -> "botsim.org" + supprimer le référentiel svn de la page jdhp
-- changer de licence ??? (GPL ? CeCILL ? ou MIT ?)
 
 + setup mass, friction, ...
 + how to setup hinge torques ? The torque is infinite so far ? (google : "bullet physics hinge torque")
