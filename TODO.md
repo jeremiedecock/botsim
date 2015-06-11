@@ -339,21 +339,21 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 - [x] Assesseurs pour les attributs des objets "Part", "BulletEnvironment" et "OSGEnvironment".
       Ajouter des assesseurs pour les propriétés physiques des objets "Part", "BulletEnvironment"
 - [x] Fonctions virtuelles pures dans Parts et Objects (Part et Object ne devraient pas être instanciables)
-- [x] rétablir "Clock" sensor (rétablir le pointeur vers BulletEnv)
-- [x] tester l'identité de l'instance du sensor dans SinusoidController:
-    - [x] si il n'y a pas exactement 1 instance de Clock dans sensorSet, throw exception
-    - [x] extraire le temps du vecteur "percept"
-    - [x] afficher le temps (de simulation) dans le contrôleur à la place du message "update actuator".
+- [x] Rétablir "Clock" sensor (rétablir le pointeur vers BulletEnv)
+- [x] Tester l'identité de l'instance du sensor dans SinusoidController:
+    - [x] Si il n'y a pas exactement 1 instance de Clock dans sensorSet, throw exception
+    - [x] Extraire le temps du vecteur "percept"
+    - [x] Afficher le temps (de simulation) dans le contrôleur à la place du message "update actuator".
 - [x] SinusoidController : calculer et afficher la valeur du signal (a * sin(t * ...))
       (écrire une fonction membre qui retourne la valeur du signal en fonction du temps)
-- [x] créer le répertoire "src/builtin_objects" : contient des modules, 1 module
+- [x] Créer le répertoire "src/builtin_objects" : contient des modules, 1 module
       par objet. Ces modules contiennent une fonction "build_object(...)" et
       éventuellement une structure "..._build_data". Les fonctions "build_object"
       prennent en entrée des paramètres et retournent une instance d'"Object". Chacun
       de ces modules jouent le même rôle que les futurs fichiers XML servant à la
       description des objets.
-- [x] idem pour "src/builtin_parts"...
-- [x] créer le RobudogJD et RobudogRH dans "src/builtin_objects/robudog.*"
-- [x] tester l'identité de l'instance des actuators dans les 2 Controller:
+- [x] Idem pour "src/builtin_parts"...
+- [x] Créer le RobudogJD et RobudogRH dans "src/builtin_objects/robudog.*"
+- [x] Tester l'identité de l'instance des actuators dans les 2 Controller:
       si il n'y a pas exactement "N" instances de Motor dans actuatorSet, throw exception
       envoyer le signal aux actuateurs
