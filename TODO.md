@@ -6,7 +6,7 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 
 - [ ] Être capable de détecter et pénaliser les explosions de simulation ; la
       pénalité doit être graduelle et non pas binaire pour ne pas perturber les
-      algorithmes d'optimisation. Soustraire au score ces pénalités (pondéré par un
+      algorithmes d'optimisation. Soustraire au score ces pénalités (pondérées par un
       certain facteur fixé).
     - [ ] Créer la classe "Valuer" qui fait ces calculs: un Listener (comme les log) du
           tronc du robot (instance de Part donné en argument). RobudogValuer hérite
@@ -26,6 +26,7 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 ## Version 2.0.3
 
 - [ ] Régler correctement les constantes physiques (mass, friction, couple des moteurs, ...)
+- [ ] How to setup hinge torques ? The torque is infinite so far ? (google : "bullet physics hinge torque")
 - [ ] Motor: set limits (contraindre les angles)
 - [ ] Reécrire ground -> plus grand, en plusieurs parties
 
@@ -43,13 +44,33 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 
 - [ ] Compléter le fichier README: décrire les principales features, ajouter des vidéos, ...
 
+## Version 2.1.1
+
+- [ ] Reécrire la classe Part sur le model de la class Object: Part n'est plus
+      héritée, les PhysicsShapes deviennent des attributs.
+    - [ ] Créer une classe core/PhysicsShape et ses dérivées
+    - [ ] Dans Part, un attribut pyhsicsShape remplace la spécialisation actuelle (Box, Sphere, ...)
+    - [ ] Déplacer la gestion du rendu des Parts dans BulletEnvironment ; Part
+          ne doit plus du tout dépendre d'OSG ; OSG devient optionnel au moment de
+          la compilation (ajouter une option cmake pour activer ou non OSG et un
+          DEFINE).
+
+## Version 2.2
+
+- [ ] modifier l'API de sorte que les paramètres puissent aussi déterminer 
+      la configuration physique du robot (angles de départ des actuateurs, etc.)
+      et pas seulement son contrôle. Comment distinguer/répartir proprement
+      les paramètres physique et les paramètres de contrôle ?
+
+## Version 2.3
+
+- [ ] Les instances de Part, Object et Scene peuvent être chargées dynamiquement depuis un fichier XML
+    - [ ] Écrire un fichier XSD pour ces 3 types de fichier XML
+    - [ ] Écrire un classe utilitaire chargée de générer les instances depuis les fichier XML
+- [ ] Les scènes étant désormais définies dans des fichiers XML, il n'y a plus qu'un seul exécutable
+- [ ] Corriger les fuites mémoire restant dans "scenes" et "builtinXXX"
 
 ## Version 2.?
-
-+ modifier l'API de sorte que les paramètres puissent aussi déterminer 
-  la configuration physique du robot (angles de départ des actuateurs, etc.)
-  et pas seulement son contrôle. Comment distinguer/répartir proprement
-  les paramètres physique et les paramètres de contrôle ?
 
 - Eigen3 / OpenSceneGraph license compatibility with MIT ??? -> ça ne pose problème que dans le cas de la redistribution des binaires with link static ???
   - changer de licence ??? ((L)GPL ? CeCILL ? ou MIT ?)
@@ -74,7 +95,6 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 - Servomoteurs: classe "Actuator" qui hérite de la classe "HingeJoint" ???
 
 + improve shadow technics ( http://trac.openscenegraph.org/projects/osg//wiki/Support/ProgrammingGuide/osgShadow )
-+ how to setup hinge torques ? The torque is infinite so far ? (google : "bullet physics hinge torque")
 
 
 ## Optimisation/IA
@@ -110,8 +130,6 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 + harmoniser les noms
   x "substeps" vs "ticks" (bullet env + logs)
   + "callback" vs "handler"
-+ corriger les fuites mémoire restant dans "scenes" et "builtin*"
-  corriger l'erreur de segmentation: afficher un message dans chaque destructeur pour voir celui qui est en cause
 + Fichiers Dat: pour la 1ere colonne, préciser dans l'entête si il s'agit du "simulation_time" ou du "user_time"
 + scripts plot génériques
   plot_part    --key key [--key key, ...] FILE [FILE, ...]   [--list_keys] -> list available keys
@@ -357,3 +375,4 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 - [x] Tester l'identité de l'instance des actuators dans les 2 Controller:
       si il n'y a pas exactement "N" instances de Motor dans actuatorSet, throw exception
       envoyer le signal aux actuateurs
+- [x] Corriger l'erreur de segmentation
