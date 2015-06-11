@@ -44,31 +44,43 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 
 - [ ] Compléter le fichier README: décrire les principales features, ajouter des vidéos, ...
 
-## Version 2.1.1
+## Version 2.2
 
 - [ ] Reécrire la classe Part sur le model de la class Object: Part n'est plus
       héritée, les PhysicsShapes deviennent des attributs.
     - [ ] Créer une classe core/PhysicsShape et ses dérivées
     - [ ] Dans Part, un attribut pyhsicsShape remplace la spécialisation actuelle (Box, Sphere, ...)
+    - [ ] Ajouter un attribut stlFile dans Part. Utiliser cet attribut pour
+          l'affichage graphique du composant dans OSGEnv.
     - [ ] Déplacer la gestion du rendu des Parts dans BulletEnvironment ; Part
           ne doit plus du tout dépendre d'OSG ; OSG devient optionnel au moment de
           la compilation (ajouter une option cmake pour activer ou non OSG et un
           DEFINE).
 
-## Version 2.2
+## Version 2.3
 
 - [ ] modifier l'API de sorte que les paramètres puissent aussi déterminer 
       la configuration physique du robot (angles de départ des actuateurs, etc.)
       et pas seulement son contrôle. Comment distinguer/répartir proprement
       les paramètres physique et les paramètres de contrôle ?
 
-## Version 2.3
+## Version 2.4
 
 - [ ] Les instances de Part, Object et Scene peuvent être chargées dynamiquement depuis un fichier XML
     - [ ] Écrire un fichier XSD pour ces 3 types de fichier XML
     - [ ] Écrire un classe utilitaire chargée de générer les instances depuis les fichier XML
 - [ ] Les scènes étant désormais définies dans des fichiers XML, il n'y a plus qu'un seul exécutable
 - [ ] Corriger les fuites mémoire restant dans "scenes" et "builtinXXX"
+
+## Version 2.4.1
+
+- [ ] Permettre d'afficher les boites englobantes attachées à chaque
+      PhysicShapes plutôt que le fichier STL des Parts.
+
+## Version 2.4.2
+
+- [ ] Écrire un grand nombre de démos (scènes) pour régler plus finement les
+      constantes physiques (mass, friction, couple des moteurs, ...).
 
 ## Version 2.?
 
