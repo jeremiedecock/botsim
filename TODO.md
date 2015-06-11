@@ -1,36 +1,55 @@
-TODO
+# TODO
 
 Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/watch?v=BGAwRKPlpCw
 
-STEP 1: objets, actuateurs, contrôleurs
-- motor: set limits (contraindre les angles)
-- reécrire ground -> plus grand, en plusieurs parties
-+ régler correctement les constantes physiques (mass, friction, couple des moteurs, ...)
-+ être capable de détecter et pénaliser les explosions de simulation ; la
-  pénalité doit être graduelle et non binaire pour ne pas perturber les
-  algorithmes d'optimisation.
-  Soustraire au score ces pénalités (pondéré par un certain facteur fixé).
-  + 1er terme de pénalité: le robot a souvent tendance à voler après une
-    explosion => compter le nombre de secondes (ou de ticks ou
-    de timesteps) durant lesquelles le robot est au dessus d'un certain plan (ie
-    combien de temps il "vole" suite à une/des explosion(s) dans la simulation)
-    -> simple, graduel
-  + 2e terme de pénalité: faire la somme de tous les mouvements de
-    rotations (en radiant) du tronc sur chacun des 3 axes.
-    -> simple, graduel et favorise en plus les robots qui marchent droit
-  La classe "Valuer" qui fait ces calculs est un Listener (comme les log) du
-  tronc du robot (instance de Part donné en argument). RobudogValuer hérite
-  de l'interface "Valuer". RobudogValuer est instancié dans la fonction "main",
-  les autres modules n'ont pas besoin de connaitre cette classe.
-  C'est RobudogValuer qui va calculer la distance parcourue par le tronc,
-  les pénalités à appliquer et le score final pour la simulation.
+## Version 2.0.2
+
+- [ ] Être capable de détecter et pénaliser les explosions de simulation ; la
+      pénalité doit être graduelle et non pas binaire pour ne pas perturber les
+      algorithmes d'optimisation. Soustraire au score ces pénalités (pondéré par un
+      certain facteur fixé).
+    - [ ] Créer la classe "Valuer" qui fait ces calculs: un Listener (comme les log) du
+          tronc du robot (instance de Part donné en argument). RobudogValuer hérite
+          de l'interface "Valuer". RobudogValuer est instancié dans la fonction "main",
+          les autres modules n'ont pas besoin de connaitre cette classe.
+          C'est RobudogValuer qui va calculer la distance parcourue par le tronc,
+          les pénalités à appliquer et le score final pour la simulation.
+    - [ ] 1er terme de pénalité: le robot a souvent tendance à voler après une
+          explosion => compter le nombre de secondes (ou de ticks ou
+          de timesteps) durant lesquelles le robot est au dessus d'un certain plan (ie
+          combien de temps il "vole" suite à une/des explosion(s) dans la simulation)
+          -> simple, graduel
+    - [ ] 2e terme de pénalité: faire la somme de tous les mouvements de
+          rotations (en radiant) du tronc sur chacun des 3 axes.
+          -> simple, graduel et favorise en plus les robots qui marchent droit
+
+## Version 2.0.3
+
+- [ ] Régler correctement les constantes physiques (mass, friction, couple des moteurs, ...)
+- [ ] Motor: set limits (contraindre les angles)
+- [ ] Reécrire ground -> plus grand, en plusieurs parties
+
+## Version 2.0.4
+
+- [ ] Régler le problème de vectorisation d'Eigen3 sur certaines plates-formes:
+      http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html
+
+## Version 2.0.5
+
+- [ ] Améliorer le rendu graphique: régler correctement les matériaux.
+      Faire une appli dédiée OSG_Qt_Lab (ex: http://www.it.hiof.no/~borres/j3d/explain/light/p-mated.html )
+
+## Version 2.1
+
+- [ ] Compléter le fichier README: décrire les principales features, ajouter des vidéos, ...
+
+
+## Version 2.?
 
 + modifier l'API de sorte que les paramètres puissent aussi déterminer 
   la configuration physique du robot (angles de départ des actuateurs, etc.)
   et pas seulement son contrôle. Comment distinguer/répartir proprement
   les paramètres physique et les paramètres de contrôle ?
-
-+ Régler le problème de vectorisation d'Eigen3 sur certaines plates-formes: http://eigen.tuxfamily.org/dox-devel/group__TopicUnalignedArrayAssert.html
 
 - Eigen3 / OpenSceneGraph license compatibility with MIT ??? -> ça ne pose problème que dans le cas de la redistribution des binaires with link static ???
   - changer de licence ??? ((L)GPL ? CeCILL ? ou MIT ?)
@@ -54,11 +73,12 @@ STEP 1: objets, actuateurs, contrôleurs
     -> + permettre le contrôle des actuateurs depuis un processus distant ? (socket, rpc, ...)
 - Servomoteurs: classe "Actuator" qui hérite de la classe "HingeJoint" ???
 
-+ setup mass, friction, ...
++ improve shadow technics ( http://trac.openscenegraph.org/projects/osg//wiki/Support/ProgrammingGuide/osgShadow )
 + how to setup hinge torques ? The torque is infinite so far ? (google : "bullet physics hinge torque")
 
 
-STEP 2: optimisation/IA (enfin !)
+## Optimisation/IA
+
 - Créer des contrôleurs
   - SAES + sinusoïdes
   - SAES + convolution de sinusoïdes
@@ -81,7 +101,8 @@ STEP 2: optimisation/IA (enfin !)
     pour ne pas dépendre d'une mauvaise configuration du moteur)
 
 
-STEP 3: petits ajouts faciles et utiles
+## Petits ajouts faciles et utiles
+
 + boost::Program_options: logs...
   --log_bullet    filename.dat            or   filename.json
   --log_part      partname,filename.dat   or   partname,filename.json
@@ -130,24 +151,21 @@ STEP 3: petits ajouts faciles et utiles
 - Permettre de sauvegarder les données des senseurs (au format JSON ?) -> appliquer le pattern listener sur les hinge et actuators
 
 
-STEP 4: com
-+ créer le site web botsim.org (utiliser le moteur Pelican ?)
-+ créer une "main features" list sur le site web (et sur jdhp.org)
-+ créer un tutoriel utilisateur de l'utilisation de la librarie sur le site web
-+ faire en sorte que la bibliothèque compile et soit utilisable sur Windows et MacOS X + tester/adapter le tutoriel sur ces pates-formes
-+ compléter la doc en ligne (doxygen)
+## Communication
+
+- créer le site web botsim.org (utiliser le moteur Pelican ?)
+- créer une "main features" list sur le site web (et sur jdhp.org)
+- créer un tutoriel utilisateur de l'utilisation de la librarie sur le site web
+- faire en sorte que la bibliothèque compile et soit utilisable sur Windows et MacOS X + tester/adapter le tutoriel sur ces pates-formes
+- compléter la doc en ligne (doxygen)
 - rendre optionnel OpenSceneGraph à la compilation
-+ créer une manpage
-+ créer un paquet Debian
-+ créer un paquet RPM (?)
-
-- Améliorer le rendu graphique: régler correctement les matériaux
-  => faire une appli dédiée OSG_Qt_Lab (ex: http://www.it.hiof.no/~borres/j3d/explain/light/p-mated.html )
-  + improve shadow technics ( http://trac.openscenegraph.org/projects/osg//wiki/Support/ProgrammingGuide/osgShadow )
-- Faire des vidéos et les poster sur jdhp
+- créer une manpage
+- créer un paquet Debian
+- créer un paquet RPM (?)
 
 
-STEP 5: adaptation de l'architecture -> botsim v3 ?
+## Adaptation de l'architecture -> botsim v3 ?
+
 - Ajouter des objets: sphere, cylindre, etc. + faire des démos
 - Objets STL (balle de golf, charnières 1DOF, charnières 2DOF, ...) + ceiling + faire des démos
 ~ Supprimer le lien fort qui lie les Parts et OSG + clarification du rôle des classes "Part" et "Object" -> Botsim v3.0 ?:
@@ -164,7 +182,8 @@ STEP 5: adaptation de l'architecture -> botsim v3 ?
   -> objets décrits en XML 
 
 
-STEP 6: divers
+## Divers
+
 - Créer un OSG_Bullet_Qt_Lab pour tester interactivement les propriétés physique des objets et du simulateur (des widgets permettent de "voir" immédiatement l'impact sur la simulation de la modification de certains paramètres)
   -> charnières: impulsions, mesure du couple appliqué, mesure de l'énergie donné en entrée/dissipée/etc., résistance, autres forces (centrifuge, ...)
   -> friction, frottements, ...
@@ -279,64 +298,62 @@ STEP 6: divers
   -> robots décrits en XML (format de sauvegarde)
 
 
+## DONE (pseudo changelog)
 
-DONE (pseudo changelog):
-
-x Utiliser eigen pour les vecteur donnés aux constructeurs des Objets
-x MSAA
-x Black background
-x Light (directional ?)
-x Ajouter et utiliser asseseurs dans Objects
-x Ajouter des fonctions wrapper vec3_eigen_to_bullet, ...
-x Renommer Objects -> Parts
-x Séparer les modules
-x Ombres
-x Caméra
-x Ajouter les fichiers AUTHORS et COPYING
-x Remplacer le makefile par un cmakelist -> Créer une arborescence et des modules .h/.cpp
-x Ajouter des matériaux pour les objets "Part"
-x Key print camera coordinates
-x Key take screenshot
-x Key start/stop recording -> screencast
-x Add OSG fog
-x Doxygen
-x Permettre de configurer le refresh rate ou de passer en mode "temps réel" (-1)
-x Améliorer le réalisme des simulations physiques
-x Renommer le répertoire "simulation" -> "scenes"
-  adapter le cmakelist pour créer plusieurs scenes co. ds metis (chaque scene = 1 exe)
-x Exporter un fichier stat (dat ou json ?)
-x Permettre de lancer une simulation sans interface graphique (sans osg)
-  ajouter une méthode run(time) dans BulletEnvironment qui ne fait qu'appeler autant de fois que nécessaire this->stepSimulation()
-  cette fonction membre doit prendre en paramètre le temps que doit durer la simulation (utiliser boost pour transmettre cette valeur à l'appel de l'executable (~=getopt))
-x Ajouter le "part" sphere (ou ball ?)
-x Ajouter une scene avec seulement une sphere qui tombe pour vérifier les logs
-x Screencast : ajouter un option pour permettre de capturer les images à un framerate constant (de 25fps).
-  créer une classe fille de osgViewer::ScreenCaptureHandler::WriteToFile avec un compteur de temps (attention: pas le temps réel mais le temps de la simulation)...
-  ou + simple, cf. src/osgViewer/Viewer.cpp "--run-max-frame-rate" ("frame rate capping")
-     https://groups.google.com/forum/#!topic/osg-users/MgMCDb2qv4c
-     http://forum.openscenegraph.org/viewtopic.php?t=2364
-     http://alphapixel.com/content/what-are-all-openscenegraph-environment-variables
-     http://comments.gmane.org/gmane.comp.graphics.openscenegraph.user/58547
-x Part est une classe abstraite, elle ne devrait pas pouvoir être instanciée -> au moins une fonction virtuelle pure (constructeur ?)
-x Assesseurs pour les attributs des objets "Part", "BulletEnvironment" et "OSGEnvironment"
-  -> Ajouter des assesseurs pour les propriétés physiques des objets "Part", "BulletEnvironment"
-x Fonctions virtuelles pures dans Parts et Objects (Part et Object ne devraient pas être instanciables)
-x rétablir "Clock" sensor (rétablir le pointeur vers BulletEnv)
-x tester l'identité de l'instance du sensor dans SinusoidController:
-  x si il n'y a pas exactement 1 instance de Clock dans sensorSet, throw exception
-  x extraire le temps du vecteur "percept"
-  x afficher le temps (de simulation) dans le contrôleur à la place du message
-    "update actuator".
-x SinusoidController : calculer et afficher la valeur du signal (a * sin(t * ...))
-  (écrire une fonction membre qui retourne la valeur du signal en fonction du temps)
-x créer le répertoire "src/builtin_objects" : contient des modules, 1 module
-  par objet. Ces modules contiennent une fonction "build_object(...)" et
-  éventuellement une structure "..._build_data". Les fonctions "build_object"
-  prennent en entrée des paramètres et retournent une instance d'"Object". Chacun
-  de ces modules jouent le même rôle que les futurs fichiers XML servant à la
-  description des objets.
-x idem pour "src/builtin_parts"...
-x créer le RobudogJD et RobudogRH dans "src/builtin_objects/robudog.*"
-x tester l'identité de l'instance des actuators dans les 2 Controller:
-  si il n'y a pas exactement "N" instances de Motor dans actuatorSet, throw exception
-  envoyer le signal aux actuateurs
+- [x] Utiliser eigen pour les vecteur donnés aux constructeurs des Objets
+- [x] MSAA
+- [x] Black background
+- [x] Light (directional ?)
+- [x] Ajouter et utiliser asseseurs dans Objects
+- [x] Ajouter des fonctions wrapper vec3_eigen_to_bullet, ...
+- [x] Renommer Objects -> Parts
+- [x] Séparer les modules
+- [x] Ombres
+- [x] Caméra
+- [x] Ajouter les fichiers AUTHORS et COPYING
+- [x] Remplacer le makefile par un cmakelist -> Créer une arborescence et des modules .h/.cpp
+- [x] Ajouter des matériaux pour les objets "Part"
+- [x] Key print camera coordinates
+- [x] Key take screenshot
+- [x] Key start/stop recording -> screencast
+- [x] Add OSG fog
+- [x] Doxygen
+- [x] Permettre de configurer le refresh rate ou de passer en mode "temps réel" (-1)
+- [x] Améliorer le réalisme des simulations physiques
+- [x] Renommer le répertoire "simulation" -> "scenes"
+      adapter le cmakelist pour créer plusieurs scenes co. ds metis (chaque scene = 1 exe)
+- [x] Exporter un fichier stat (dat ou json ?)
+- [x] Permettre de lancer une simulation sans interface graphique (sans osg)
+      ajouter une méthode run(time) dans BulletEnvironment qui ne fait qu'appeler autant de fois que nécessaire this->stepSimulation()
+      cette fonction membre doit prendre en paramètre le temps que doit durer la simulation (utiliser boost pour transmettre cette valeur à l'appel de l'executable (~=getopt))
+- [x] Ajouter le "part" sphere (ou ball ?)
+- [x] Ajouter une scene avec seulement une sphere qui tombe pour vérifier les logs
+- [x] Screencast : ajouter un option pour permettre de capturer les images à un framerate constant (de 25fps).
+      créer une classe fille de osgViewer::ScreenCaptureHandler::WriteToFile avec un compteur de temps (attention: pas le temps réel mais le temps de la simulation)...
+      ou + simple, cf. src/osgViewer/Viewer.cpp "--run-max-frame-rate" ("frame rate capping")
+    - https://groups.google.com/forum/#!topic/osg-users/MgMCDb2qv4c
+    - http://forum.openscenegraph.org/viewtopic.php?t=2364
+    - http://alphapixel.com/content/what-are-all-openscenegraph-environment-variables
+    - http://comments.gmane.org/gmane.comp.graphics.openscenegraph.user/58547
+- [x] Part est une classe abstraite, elle ne devrait pas pouvoir être instanciée -> au moins une fonction virtuelle pure (constructeur ?)
+- [x] Assesseurs pour les attributs des objets "Part", "BulletEnvironment" et "OSGEnvironment".
+      Ajouter des assesseurs pour les propriétés physiques des objets "Part", "BulletEnvironment"
+- [x] Fonctions virtuelles pures dans Parts et Objects (Part et Object ne devraient pas être instanciables)
+- [x] rétablir "Clock" sensor (rétablir le pointeur vers BulletEnv)
+- [x] tester l'identité de l'instance du sensor dans SinusoidController:
+    - [x] si il n'y a pas exactement 1 instance de Clock dans sensorSet, throw exception
+    - [x] extraire le temps du vecteur "percept"
+    - [x] afficher le temps (de simulation) dans le contrôleur à la place du message "update actuator".
+- [x] SinusoidController : calculer et afficher la valeur du signal (a * sin(t * ...))
+      (écrire une fonction membre qui retourne la valeur du signal en fonction du temps)
+- [x] créer le répertoire "src/builtin_objects" : contient des modules, 1 module
+      par objet. Ces modules contiennent une fonction "build_object(...)" et
+      éventuellement une structure "..._build_data". Les fonctions "build_object"
+      prennent en entrée des paramètres et retournent une instance d'"Object". Chacun
+      de ces modules jouent le même rôle que les futurs fichiers XML servant à la
+      description des objets.
+- [x] idem pour "src/builtin_parts"...
+- [x] créer le RobudogJD et RobudogRH dans "src/builtin_objects/robudog.*"
+- [x] tester l'identité de l'instance des actuators dans les 2 Controller:
+      si il n'y a pas exactement "N" instances de Motor dans actuatorSet, throw exception
+      envoyer le signal aux actuateurs
