@@ -4,8 +4,14 @@ Copyright (c) 2010,2011,2015 Jeremie DECOCK (http://www.jdhp.org)
 
 ## Description
 
-Botsim.org is a robots simulator mainly used to test some evolutionary
-algorithms. 
+Botsim.org is a robots simulator mainly used to test some biologically inspired
+algorithms (machine learning, evolutionary algorithms, reinforcement learning,
+...).
+
+## Motivations
+
+Generate in-silico original artificial organisms which can efficiently
+accomplish some given tasks (move, change their environment, survive, ...).
 
 ## Source code
 
