@@ -14,6 +14,7 @@ Generate in-silico original artificial organisms which can efficiently
 accomplish some given tasks (move, change their environment, survive, ...).
 
 More precisely, Botsim.org was written:
+
 1. to reproduce the experiments and the results of the [Golem Project](www.demo.cs.brandeis.edu/golem/):
    optimize the morphology and control of robots in simulation via
    biologically inspired methods (evolutionary algorithms and neural networks) then
