@@ -11,14 +11,14 @@ algorithms (machine learning, evolutionary algorithms, reinforcement learning,
 Our motivations: generate in-silico original artificial organisms which can efficiently
 accomplish some given tasks (move, change their environment, survive, ...).
 
-More precisely, Botsim.org was written:
+More precisely, Botsim.org was written to:
 
-1. to reproduce the experiments and the results of the [Golem Project](http://www.demo.cs.brandeis.edu/golem/):
+1. reproduce the experiments and the results of the [Golem Project](http://www.demo.cs.brandeis.edu/golem/):
    optimize the morphology and control of robots in simulation via
    biologically inspired methods (evolutionary algorithms and neural networks) then
    materialize these self-generated organisms using a 3D printer;
-2. to improve control of existing robots by generating a large number of in-silico simulations;
-3. to reproduce some experiments on artificial curiosity by the [Inria Flowers](http://www.inria.fr/equipes/flowers) team.
+2. improve control of existing robots by generating a large number of in-silico simulations;
+3. reproduce some experiments on artificial curiosity by the [Inria Flowers](http://www.inria.fr/equipes/flowers) team.
 
 ## Source code
 
