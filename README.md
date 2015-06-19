@@ -8,9 +8,7 @@ Botsim.org is a robots simulator mainly used to test some biologically inspired
 algorithms (machine learning, evolutionary algorithms, reinforcement learning,
 ...).
 
-## Motivations
-
-Generate in-silico original artificial organisms which can efficiently
+Our motivations: generate in-silico original artificial organisms which can efficiently
 accomplish some given tasks (move, change their environment, survive, ...).
 
 More precisely, Botsim.org was written:
