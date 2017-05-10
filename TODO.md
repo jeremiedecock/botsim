@@ -4,6 +4,8 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
 
 ## Version 2.0.2
 
+- [ ] Vérifier si le projet compile sur MacOSX et essayer de reprendre le
+      développement sur xcode.
 - [ ] Être capable de détecter et pénaliser les explosions de simulation ; la
       pénalité doit être graduelle et non pas binaire pour ne pas perturber les
       algorithmes d'optimisation. Soustraire au score ces pénalités (pondérées par un
@@ -22,6 +24,16 @@ Exemple de qualité physique et visuelle à atteindre: https://www.youtube.com/w
     - [ ] 2e terme de pénalité: faire la somme de tous les mouvements de
           rotations (en radiant) du tronc sur chacun des 3 axes.
           -> simple, graduel et favorise en plus les robots qui marchent droit
+- [ ] Permettre de passer les paramètres du contrôleur (constantes des
+      sinusoides, poids des neurones d'un réseau de neurones, etc.) des
+      actuateurs au simulateur via un fichier de configuration (Texte, CSV,
+      JSON ou autre) et récupérer la fitnesse dans un autre fichier. L'idée
+      étant de déporter la partie optimisation/ML/expériences/analyse/... en
+      dehors de l'executable, dans des scripts Python (afin de bénéficier des
+      nombreux avantages de Python dans ces domaines et pour
+      assouplir/accélérer le développement du projet).  L'executable ne serait
+      plus que la fonction de fitness. Dans un second temps, envisager de faire
+      un vrai binding Python.
 
 ## Version 2.0.3
 
