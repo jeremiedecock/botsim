@@ -10,6 +10,9 @@
 #ifndef BOTSIM_TOOLS_H
 #define BOTSIM_TOOLS_H
 
+#include <iostream>
+#include <vector>
+
 #include <boost/algorithm/string.hpp>
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
